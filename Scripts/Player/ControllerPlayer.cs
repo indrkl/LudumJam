@@ -33,15 +33,12 @@ public class ControllerPlayer : EntityBase {
 
         if (Mathf.Abs(jump) > 0.1)
         {
-            RaycastHit2D testJump = Physics2D.Raycast(transform.position, Vector2.down, 10);
-            if (testJump.collider != null)
+            RaycastHit2D testJump = Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
+            Debug.Log("jump y " + testJump.point.y);
+            Debug.Log("my Y " + transform.position.y);
+            if (testJump)
             {
-                float dist = Mathf.Abs(testJump.point.y - transform.position.y);
-                print(dist);
-                if (dist < 1)
-                {
-                        body.velocity = new Vector2(body.velocity.x, jump);
-                }
+                body.velocity = new Vector2(body.velocity.x, jump);
             }
         }
         if (movement > 0)
