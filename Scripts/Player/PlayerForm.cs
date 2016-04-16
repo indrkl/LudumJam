@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameMaster : MonoBehaviour {
+public class PlayerForm : MonoBehaviour {
+    public int currentForm = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +13,10 @@ public class GameMaster : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void SwitchForm (int newForm) {
+        currentForm = newForm;
+
+
+    }
 }
