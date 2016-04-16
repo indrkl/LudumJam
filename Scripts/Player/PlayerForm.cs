@@ -30,7 +30,7 @@ public class PlayerForm : MonoBehaviour {
         if (newForm == 0)
         {
             cp.speed = 5;
-            cp.jumpHeight = 10;
+            cp.jumpHeight = 15;
 
             bc.size = new Vector2(0.56f, 0.43f);
             bc.offset = new Vector2(0, 0.23f);
