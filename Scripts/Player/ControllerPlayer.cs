@@ -1,29 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerPlayer : MonoBehaviour {
-    Rigidbody2D body;
-    EntityBase manager;
-    PlayerForm form;
-    float speed;
-    float jumpHeight;
+public class ControllerPlayer : EntityBase {
 
     //state that the player spawns in
     public int startingForm;
+    public PlayerForm form;
 
-	void Start () {
-        body = gameObject.GetComponent<Rigidbody2D>();
-        manager = gameObject.GetComponent<EntityBase>();
+    void Start()
+    {
         form = gameObject.GetComponent<PlayerForm>();
 
         //get player maximum speed and jump height
-        speed = manager.speed;
-        jumpHeight = manager.jumpHeight;
+    }
 
-
-	}
-	
-	void Update () {
+    void Update () {
         float movement = Input.GetAxis("Horizontal") * speed;
         movement *= Time.deltaTime;
         body.velocity = new Vector2(movement, body.velocity.y);
