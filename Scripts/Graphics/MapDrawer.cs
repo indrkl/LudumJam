@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class MapDrawer : MonoBehaviour {
     public List<GameObject> mapObjects;
-    TileSet tileSet;
+    public TileSet tileSet;
 
     public GameObject blockPrefab;
 
@@ -27,8 +27,14 @@ public class MapDrawer : MonoBehaviour {
         {
             for(int j = 0; j < map.YSize; j++)
             {
-                GameObject obj = Instantiate(blockPrefab);
-                obj.GetComponent<SpriteRenderer>().sprite = tileSet.getFittingSprite(i, j, map);
+                if (map.filled[i][j])
+                {
+                    GameObject obj = Instantiate(blockPrefab);
+                    Debug.Log(i + " " + j);
+                    obj.GetComponent<SpriteRenderer>().sprite = tileSet.getFittingSprite(i, j, map);
+                    obj.transform.position = new Vector2(i, j);
+                    mapObjects.Add(obj);
+                }
             }
         }
     }
