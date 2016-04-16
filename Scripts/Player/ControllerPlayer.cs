@@ -34,15 +34,11 @@ public class ControllerPlayer : EntityBase {
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
-            RaycastHit2D testJump = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 10);
-            if (testJump.collider != null)
+            RaycastHit2D testJump = Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
+
+            if (testJump)
             {
-                float dist = Mathf.Abs(testJump.point.y - transform.position.y);
-                print(dist);
-                if (dist < 0.6f)
-                {
-                        body.velocity = new Vector2(body.velocity.x, jump);
-                }
+                body.velocity = new Vector2(body.velocity.x, jump);
             }
         }
 
@@ -64,8 +60,5 @@ public class ControllerPlayer : EntityBase {
         } else {
             anim.SetBool("IsIdle", false);
         }
-
-
-
     }
 }
