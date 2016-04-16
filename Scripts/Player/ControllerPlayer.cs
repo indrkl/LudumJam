@@ -6,6 +6,7 @@ public class ControllerPlayer : EntityBase {
     //state that the player spawns in
     public int startingForm;
     public PlayerForm form;
+    public Animator anim;
 
     void Start()
     {
@@ -18,6 +19,16 @@ public class ControllerPlayer : EntityBase {
         float movement = Input.GetAxis("Horizontal") * speed;
         movement *= Time.deltaTime;
         body.velocity = new Vector2(movement, body.velocity.y);
+
+        //controll movment animation
+
+        print(movement);
+        if (Mathf.Abs(movement) > 0.1) {
+            anim.SetFloat("Speed", 1);
+            anim.Play("catRun", 0);
+        } else {
+            anim.SetFloat("Speed", 0);
+        }
 
         float jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
