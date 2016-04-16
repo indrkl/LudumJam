@@ -110,6 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentForm: 0
+  rb: {fileID: 5042292}
+  bc: {fileID: 6147642}
+  cp: {fileID: 11420112}
 --- !u!212 &21221994
 SpriteRenderer:
   m_ObjectHideFlags: 1
