@@ -31,16 +31,18 @@ public class ControllerPlayer : EntityBase {
 
         float jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
+        //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
             RaycastHit2D testJump = Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
-            Debug.Log("jump y " + testJump.point.y);
-            Debug.Log("my Y " + transform.position.y);
+
             if (testJump)
             {
                 body.velocity = new Vector2(body.velocity.x, jump);
             }
         }
+
+        //flip direction
         if (movement > 0)
         {
             direction = "RIGHT";
@@ -51,5 +53,12 @@ public class ControllerPlayer : EntityBase {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
-	}
+        AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (Mathf.Abs(movement) < 0.05 && !currentState.IsName("CatRun")) {
+            anim.SetBool("IsIdle", true);
+        } else {
+            anim.SetBool("IsIdle", false);
+        }
+    }
 }
