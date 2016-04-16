@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EntityBase : MonoBehaviour {
+public abstract class EntityBase : MonoBehaviour {
     public float speed;
     public float jumpHeight;
 
-    // Use this for initialization
-    void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public Rigidbody2D body;
+
+    void Start()
+    {
+        body = gameObject.GetComponent<Rigidbody2D>();
+        //get player maximum speed and jump height
+    }
 }
