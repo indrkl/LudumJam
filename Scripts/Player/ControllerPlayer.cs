@@ -19,25 +19,28 @@ public class ControllerPlayer : EntityBase {
 
     void Update () {
         float movement = Input.GetAxis("Horizontal") * speed;
-        movement *= Time.deltaTime;
         body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
 
         //controll movment animation
-
-        print(movement);
-        if (Mathf.Abs(movement) > 0.1) {
+        if (Mathf.Abs(movement) > 0.01) {
             anim.SetFloat("Speed", 1);
-            anim.Play("catRun", 0);
+            //anim.Play("catRun", 0);
         } else {
             anim.SetFloat("Speed", 0);
         }
 
         float jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
-        if (Mathf.Abs(jump) > 0.1) {
-            body.velocity = new Vector2(body.velocity.x, jump);
+        if (Mathf.Abs(jump) > 0.1)
+        {
+            RaycastHit2D testJump = Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
+            Debug.Log("jump y " + testJump.point.y);
+            Debug.Log("my Y " + transform.position.y);
+            if (testJump)
+            {
+                body.velocity = new Vector2(body.velocity.x, jump);
+            }
         }
-
         if (movement > 0)
         {
             direction = "RIGHT";
