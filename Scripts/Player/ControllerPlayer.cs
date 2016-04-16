@@ -8,6 +8,8 @@ public class ControllerPlayer : EntityBase {
     public PlayerForm form;
     public Animator anim;
 
+    string direction;
+
     void Start()
     {
         form = gameObject.GetComponent<PlayerForm>();
@@ -34,6 +36,16 @@ public class ControllerPlayer : EntityBase {
 
         if (Mathf.Abs(jump) > 0.1) {
             body.velocity = new Vector2(body.velocity.x, jump);
+        }
+
+        if (movement > 0)
+        {
+            direction = "RIGHT";
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        } else if (movement < 0)
+        {
+            direction = "LEFT";
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
 
 	}

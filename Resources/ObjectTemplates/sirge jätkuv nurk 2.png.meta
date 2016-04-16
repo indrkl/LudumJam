@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:ArtAssets/all nurk vasak.png.meta
-guid: 754743ea3b49d2548a3a827bc3bc4bba
-=======
-guid: 315a001aef556134696d26c4b6f254c8
-timeCreated: 1460813702
-licenseType: Free
->>>>>>> 511475934a71293060459ee4d2024eb3d01cd84b:Resources/ObjectTemplates/sirge jätkuv nurk 2.png.meta
+guid: b72113d8268ff7b47b8564cfbbe62b6d
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -34,23 +28,23 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
-  nPOTScale: 0
+    wrapMode: -1
+  nPOTScale: 1
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 250
-  alphaIsTransparency: 1
-  textureType: 8
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 0
+  textureType: -1
   buildTargetSettings: []
   spriteSheet:
     sprites: []
