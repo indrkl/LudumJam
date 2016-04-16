@@ -5,6 +5,7 @@ public class ControllerPlayer : EntityBase {
     public PlayerForm form;
     public float cooldown;
     float cd_remaining;
+    public bool trample;
     //state that the player spawns in
 
 
