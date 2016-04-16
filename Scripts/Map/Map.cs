@@ -15,14 +15,21 @@ public class Map {
 
     public void initiate(int X, int Y)
     {
+        int currentHeight = 1;
         XSize = X;
         YSize = Y;
+        int nextUpdate = Random.Range(4, 8);
         for(int i = 0; i < X; i++){
+            if (i > nextUpdate)
+            {
+                currentHeight = Mathf.Max(1, Mathf.Min(4, currentHeight + Random.Range(-1, 2)));
+                nextUpdate = i + Random.Range(1, 3);
+            }
             filled.Add(new bool[Y]);
             for(int j = 1; j < Y; j++)
             {
                 filled[i][j] = false;
-                if (j == 1 && i != 0 && i != X - 1)
+                if (j!= 0 && j <= currentHeight && i != 0 && i != X - 1)
                     filled[i][j] = true;
             }
         }
