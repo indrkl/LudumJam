@@ -42,7 +42,7 @@ public class PlayerForm : MonoBehaviour {
             cp.speed = 0;
             cp.jumpHeight = 0;
 
-            bc.size = new Vector2(0.56f, 0.43f);
+            bc.size = new Vector2(0.34f, 0.43f);
             bc.offset = new Vector2(0, 0.23f);
 
             rb.mass = 3;

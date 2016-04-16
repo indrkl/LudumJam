@@ -13,6 +13,7 @@ public abstract class EntityBase : MonoBehaviour {
     public Animator anim;
 
     public Rigidbody2D body;
+    public BoxCollider2D box;
 
     void Start()
     {
@@ -39,9 +40,7 @@ public abstract class EntityBase : MonoBehaviour {
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
-            RaycastHit2D testJump = Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
-
-            if (testJump)
+            if (box.IsTouchingLayers())
             {
                 body.velocity = new Vector2(body.velocity.x, jump);
             }
@@ -57,17 +56,6 @@ public abstract class EntityBase : MonoBehaviour {
         {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }
-
-        AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
-
-        if (Mathf.Abs(movement) < 0.05 && !currentState.IsName("CatRun"))
-        {
-            anim.SetBool("IsIdle", true);
-        }
-        else
-        {
-            anim.SetBool("IsIdle", false);
         }
     }
 }
