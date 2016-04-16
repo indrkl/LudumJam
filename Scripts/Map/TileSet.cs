@@ -17,6 +17,7 @@ public class TileSet : MonoBehaviour {
                 options.Add(tile);
             }
         }
+        Debug.Log(options.Count);
         int r = Random.Range(0, options.Count);
         return options[r].sprite;
     }
