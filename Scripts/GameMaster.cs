@@ -2,14 +2,11 @@
 using System.Collections;
 
 public class GameMaster : MonoBehaviour {
+    MapGenerator generator;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public void startLevel()
+    {
+        Map map = generator.generateMap();
+
+    }
 }
