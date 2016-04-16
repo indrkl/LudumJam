@@ -16,7 +16,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-*.meta
+ArtAssets/*.meta
 
 # =========================
 # Operating System Files

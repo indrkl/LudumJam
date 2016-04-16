@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+guid: 9b60542c7dfdb154f96d74c44a970198
+=======
 <<<<<<< HEAD
 guid: 04e0346bbbaafb94fa959ca68b9dd9a4
 timeCreated: 1460808823
@@ -13,9 +15,7 @@ timeCreated: 1460806759
 >>>>>>> 72cfa9ed7906f6b1f3c47a638721af1eeec0c6dc
 >>>>>>> origin/master
 licenseType: Free
-=======
-guid: 9b60542c7dfdb154f96d74c44a970198
->>>>>>> 44d3dfded293048898b30ea34f6cdd4fb35c8137
+>>>>>>> origin/master
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -45,6 +45,8 @@ TextureImporter:
   textureSettings:
     filterMode: -1
 <<<<<<< HEAD
+    aniso: 16
+=======
 <<<<<<< HEAD
     aniso: -1
 =======
@@ -54,9 +56,7 @@ TextureImporter:
     aniso: 16
 >>>>>>> 72cfa9ed7906f6b1f3c47a638721af1eeec0c6dc
 >>>>>>> origin/master
-=======
-    aniso: 16
->>>>>>> 44d3dfded293048898b30ea34f6cdd4fb35c8137
+>>>>>>> origin/master
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -71,6 +71,8 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
 <<<<<<< HEAD
+  spritePixelsToUnits: 250
+=======
 <<<<<<< HEAD
   spritePixelsToUnits: 100
 =======
@@ -80,9 +82,7 @@ TextureImporter:
   spritePixelsToUnits: 250
 >>>>>>> 72cfa9ed7906f6b1f3c47a638721af1eeec0c6dc
 >>>>>>> origin/master
-=======
-  spritePixelsToUnits: 250
->>>>>>> 44d3dfded293048898b30ea34f6cdd4fb35c8137
+>>>>>>> origin/master
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
