@@ -16,5 +16,7 @@ public class PlayerForm : MonoBehaviour {
 
     void SwitchForm (int newForm) {
         currentForm = newForm;
+
+
     }
 }
