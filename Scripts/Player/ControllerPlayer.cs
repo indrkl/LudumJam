@@ -18,7 +18,7 @@ public class ControllerPlayer : EntityBase {
     void Update () {
         float movement = Input.GetAxis("Horizontal") * speed;
         movement *= Time.deltaTime;
-        body.velocity = new Vector2(movement, body.velocity.y);
+        body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
 
         //controll movment animation
 
