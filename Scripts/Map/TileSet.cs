@@ -7,9 +7,8 @@ public class TileSet : MonoBehaviour {
     public List<Tile> tiles;
 
 
-    public Sprite getFittingSprite(int X, int Y, Map map)
+    public Tile getFittingSprite(int X, int Y, Map map)
     {
-        Debug.Log(X + " " + Y);
         List<Tile> options = new List<Tile>();
         foreach(Tile tile in tiles)
         {
@@ -22,7 +21,11 @@ public class TileSet : MonoBehaviour {
         {
             Debug.Log(map.filled[X + 1][Y] + " " + map.filled[X][Y + 1] + " " + map.filled[X][Y - 1] + " " + map.filled[X - 1][Y]);
         }
+        if(options.Count > 1)
+        {
+            Debug.Log("More options");
+        }
         int r = Random.Range(0, options.Count);
-        return options[r].sprite;
+        return options[r];
     }
 }

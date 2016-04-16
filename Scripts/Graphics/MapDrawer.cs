@@ -30,8 +30,13 @@ public class MapDrawer : MonoBehaviour {
                 if (map.filled[i][j])
                 {
                     GameObject obj = Instantiate(blockPrefab);
-                    Debug.Log(i + " " + j);
-                    obj.GetComponent<SpriteRenderer>().sprite = tileSet.getFittingSprite(i, j, map);
+                    Tile tile = tileSet.getFittingSprite(i, j, map);
+                    if (tile.canRotate)
+                    {
+                        int rot = Random.Range(0, 4);
+                        obj.transform.rotation = Quaternion.Euler(0, 0, rot * 90);
+                    }
+                    obj.GetComponent<SpriteRenderer>().sprite = tile.sprite;
                     obj.transform.position = new Vector2(i, j);
                     mapObjects.Add(obj);
                 }
