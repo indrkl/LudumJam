@@ -10,6 +10,10 @@ public class PlayerForm : MonoBehaviour {
      1 - barrel
     */
 
+    public Rigidbody2D rb;
+    public BoxCollider2D bc;
+    public ControllerPlayer cp;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,12 +24,28 @@ public class PlayerForm : MonoBehaviour {
 	
 	}
 
-    void SwitchForm (int newForm) {
+    public void SwitchForm (int newForm) {
         currentForm = newForm;
 
         if (newForm == 0)
         {
+            cp.speed = 5;
+            cp.jumpHeight = 10;
 
+            bc.size = new Vector2(0.56f, 0.43f);
+            bc.offset = new Vector2(0, 0.23f);
+
+            rb.mass = 1;
+        }
+        else if (newForm == 1)
+        {
+            cp.speed = 0;
+            cp.jumpHeight = 0;
+
+            bc.size = new Vector2(0.56f, 0.43f);
+            bc.offset = new Vector2(0, 0.23f);
+
+            rb.mass = 3;
         }
     }
 }

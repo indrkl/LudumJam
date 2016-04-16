@@ -52,7 +52,12 @@ public class ControllerPlayer : EntityBase {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-
+        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            form.SwitchForm(1);
+        }
+        
         AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
 
         if (Mathf.Abs(movement) < 0.05 && !currentState.IsName("CatRun")) {
@@ -60,5 +65,7 @@ public class ControllerPlayer : EntityBase {
         } else {
             anim.SetBool("IsIdle", false);
         }
+
+        anim.SetInteger("Form", form.currentForm);
     }
 }
