@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class MapGenerator : MonoBehaviour {
-    int Xsize;
-    int Ysize;
+    public int Xsize;
+    public int Ysize;
 
     public Map generateMap()
     {
