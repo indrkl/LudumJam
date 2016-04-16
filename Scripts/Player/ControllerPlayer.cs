@@ -23,12 +23,12 @@ public class ControllerPlayer : EntityBase {
         //controll movment animation
 
         print(movement);
-        if (Mathf.Abs(movement) > 0.1) {
+        /*if (Mathf.Abs(movement) > 0.1) {
             anim.SetFloat("Speed", 1);
             anim.Play("catRun", 0);
         } else {
             anim.SetFloat("Speed", 0);
-        }
+        }*/
 
         float jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
