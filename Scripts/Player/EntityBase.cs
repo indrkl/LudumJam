@@ -74,7 +74,7 @@ public abstract class EntityBase : MonoBehaviour {
         if (Mathf.Abs(jump) > 0.1)
         {
 
-            if (((feet.IsTouchingLayers() && (Time.time - lastJumpTime) >= 0.5f)) || (Time.time - lastJumpTime < 0.5f))
+            if (((feet.IsTouchingLayers() && (Time.time - lastJumpTime) >= 0.3f)) || (Time.time - lastJumpTime < 0.2f))
             {
                 if(feet.IsTouchingLayers())
                     lastJumpTime = Time.time;
