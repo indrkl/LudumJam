@@ -30,7 +30,6 @@ public class CameraScript : MonoBehaviour {
         {
             float curDistance = this.transform.position.x - this.transform.position.x * BGSpeed[i];
             curDistance = curDistance % BGLength[i];
-            Debug.Log(curDistance);
             BG1[i].transform.position = new Vector3(this.transform.position.x - curDistance, BG1[i].transform.position.y, BG1[i].transform.position.z);
             BG2[i].transform.localPosition = BG1[i].transform.localPosition + new Vector3(BGLength[i], 0, 0);
         }
