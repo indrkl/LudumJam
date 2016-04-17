@@ -58,8 +58,8 @@ public abstract class EntityBase : MonoBehaviour {
     {
         if (debug)
             Debug.Log("Is updating");
-        //body.velocity = new Vector2(movement, body.velocity.y);
-        body.AddForce(new Vector2((movement - body.velocity.x), 0));
+        body.velocity = new Vector2(movement, body.velocity.y);
+        //body.AddForce(new Vector2((movement - body.velocity.x), 0));
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
@@ -78,10 +78,8 @@ public abstract class EntityBase : MonoBehaviour {
             {
                 if(feet.IsTouchingLayers())
                     lastJumpTime = Time.time;
-                Debug.Log("Jumping " + Time.time);
-                //body.velocity = new Vector2(body.velocity.x, jump);
-                Debug.Log(body.velocity.y + " " + jumpHeight);
-                body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
+                body.velocity = new Vector2(body.velocity.x, jump);
+                //body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }
         }
 
@@ -109,7 +107,8 @@ public abstract class EntityBase : MonoBehaviour {
             {
                 return;
             }
-            float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
+            //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
+            float velocityPower = c.relativeVelocity.magnitude;
             Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;
