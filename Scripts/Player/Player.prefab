@@ -101,6 +101,8 @@ MonoBehaviour:
   body: {fileID: 5042292}
   box: {fileID: 6147642}
   form: {fileID: 11458784}
+  cooldown: 1
+  trample: 0
 --- !u!114 &11458784
 MonoBehaviour:
   m_ObjectHideFlags: 1
