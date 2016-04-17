@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CameraScript : MonoBehaviour {
     public ControllerPlayer player;
     public float z = -10;
     public float y = 5;
+
+    public List<GameObject> BG1;
+    public List<GameObject> BG2;
+
+    public List<float> BGLength;
+    public List<float> BGSpeed;
 
     public float yOffSet;
 	
@@ -16,8 +23,17 @@ public class CameraScript : MonoBehaviour {
             yOffSet = Mathf.Sin(Time.time*20) / 3.0f * Mathf.Pow(Mathf.Abs(player.movement) / player.speed, 3);
         }
         else yOffSet = yOffSet * 0.9f;
-        this.transform.position = new Vector3(player.transform.position.x, Mathf.Min(y, player.transform.position.y) + yOffSet, z);
+        this.transform.position = new Vector3(player.transform.position.x, Mathf.Max(y, player.transform.position.y) + yOffSet, z);
         this.transform.rotation = Quaternion.EulerAngles(yOffSet/17.0f, yOffSet/17.0f, yOffSet/17.0f);
+
+        for(int i = 0; i < BG1.Count; i++)
+        {
+            float curDistance = this.transform.position.x - this.transform.position.x * BGSpeed[i];
+            curDistance = curDistance % BGLength[i];
+            Debug.Log(curDistance);
+            BG1[i].transform.position = new Vector3(this.transform.position.x - curDistance, BG1[i].transform.position.y, BG1[i].transform.position.z);
+            BG2[i].transform.position = BG1[i].transform.position + new Vector3(BGLength[i], 0, 0);
+        }
 	}
 
 
