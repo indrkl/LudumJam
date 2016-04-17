@@ -18,7 +18,7 @@ public class BasicWalk : AIBehaviour {
         }
         else
         {
-            if (Physics2D.Linecast(transform.position + new Vector3(0, 0.3f, 0), transform.position + new Vector3(0, 0.3f, 0) + lookingAt * 1.5f, 1 << LayerMask.NameToLayer("Ground")) || !Physics2D.Linecast(transform.position + new Vector3(0, 1.5f, 0) + lookingAt * 3, transform.position - new Vector3(0, 0.3f, 0) + lookingAt * 1.5f, 1 << LayerMask.NameToLayer("Ground")))
+            if (Physics2D.Linecast(transform.position + new Vector3(0, 0.3f, 0), transform.position + new Vector3(0, 0.3f, 0) + lookingAt * 1f, 1 << LayerMask.NameToLayer("Ground")) || !Physics2D.Linecast(transform.position + new Vector3(0, 1f, 0) + lookingAt * 3, transform.position - new Vector3(0, 0.3f, 0) + lookingAt * 1f, 1 << LayerMask.NameToLayer("Ground")))
             {
                 right = !right;
                 lastChange = Time.time;
