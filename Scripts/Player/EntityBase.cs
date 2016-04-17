@@ -94,7 +94,10 @@ public abstract class EntityBase : MonoBehaviour {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
+        lastVelocity = body.velocity;
     }
+
+    public Vector3 lastVelocity;
 
     void OnCollisionEnter2D(Collision2D c)
     {
@@ -108,7 +111,7 @@ public abstract class EntityBase : MonoBehaviour {
                 return;
             }
             //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
-            float velocityPower = c.relativeVelocity.magnitude;
+            float velocityPower = (other.lastVelocity - this.lastVelocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
             Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;

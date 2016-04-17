@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerForm : MonoBehaviour {
     public int currentForm = 0;
@@ -15,9 +16,12 @@ public class PlayerForm : MonoBehaviour {
     public ControllerPlayer cp;
     public ParticleSystem psys;
 
+    public static ArrayList<>
+
 	// Use this for initialization
 	void Start () {
-	
+	    
+
 	}
 	
 	// Update is called once per frame
@@ -35,8 +39,8 @@ public class PlayerForm : MonoBehaviour {
 
         if (newForm == 0)
         {
-            cp.speed = 5;
-            cp.jumpHeight = 15;
+            cp.speed = 6;
+            cp.jumpHeight = 12;
 
             bc.size = new Vector2(0.56f, 0.43f);
             bc.offset = new Vector2(0, 0.23f);

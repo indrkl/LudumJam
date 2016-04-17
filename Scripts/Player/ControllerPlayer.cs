@@ -15,7 +15,7 @@ public class ControllerPlayer : EntityBase {
         //get player maximum speed and jump height
     }
 
-    void Update () {        
+    void LateUpdate () {        
         //switch form
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
