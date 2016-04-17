@@ -24,6 +24,9 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public BoxCollider2D bc;
     public ControllerPlayer cp;
     public ParticleSystem psys;
+	public SoundManager soundManager;
+
+	public AudioClip transformSound;
 
     public static List<PlayerForm> forms;
 
@@ -43,6 +46,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         if (currentForm != newForm)
         {
             psys.Play();
+			soundManager.PlaySingle (transformSound);
         }
         currentForm = newForm;
         Debug.Log(forms[currentForm].formNumber + " " + newForm);
