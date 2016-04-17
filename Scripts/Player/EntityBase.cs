@@ -63,7 +63,6 @@ public abstract class EntityBase : MonoBehaviour {
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
-            print("set speed to 1");
             anim.SetFloat("Speed", 1);
         }
         else
@@ -113,7 +112,7 @@ public abstract class EntityBase : MonoBehaviour {
                 return;
             }
             //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
-            float velocityPower = c.relativeVelocity.magnitude;
+            float velocityPower = c.relativeVelocity.magnitude ;
             Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;
