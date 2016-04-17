@@ -8,6 +8,12 @@ public class MapDrawer : MonoBehaviour {
     public TileSet tileSet;
 
     public GameObject blockPrefab;
+	public GameObject AestheticPrefab;
+	public float aestheticsDensity = 0.9f;
+
+	public List<Sprite> AesthericSprites;
+
+	private List<int> yCoordinates;
 
 
     void Awake()
@@ -17,6 +23,8 @@ public class MapDrawer : MonoBehaviour {
 
     public void UpdateMap(Map map)
     {
+		
+
         foreach(GameObject obj in mapObjects)
         {
             Destroy(obj);
@@ -41,7 +49,31 @@ public class MapDrawer : MonoBehaviour {
                     mapObjects.Add(obj);
                 }
             }
+
+			// Generate random scene aesthetic objects
+			yCoordinates = getYcoordinates(map.filled[i]);
+			for (int j = 0; j < yCoordinates.Count; j++) {
+				if (Random.value > aestheticsDensity) {
+					GameObject obj = Instantiate (AestheticPrefab);
+					obj.GetComponent<SpriteRenderer> ().sprite = AesthericSprites[Random.Range(0, AesthericSprites.Count)];
+					obj.transform.position = new Vector2 (i, yCoordinates [j]);
+					mapObjects.Add (obj);
+
+
+				}
+			}
         }
+
     }
+
+	private List<int> getYcoordinates(bool[] boolMap) {
+		List<int> res = new List<int>();
+		for (int i = 1; i < boolMap.Length- 1; i++) {
+			if (boolMap [i] == true && boolMap [i + 1] == false) {
+				res.Add(i+1);
+			}
+		}
+		return res;
+	}
 
 }
