@@ -5,6 +5,7 @@ public class Aesthetic : MonoBehaviour {
     public int XSize;
     public int YSize;
     public Sprite sprite;
+    public float offSet = 0.1f;
 
     public static int getRoomMultiplier(int X, int Y, Map map)
     {

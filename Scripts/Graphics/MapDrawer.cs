@@ -68,7 +68,7 @@ public class MapDrawer : MonoBehaviour {
                         Aesthetic chosen = options[Random.Range(0, options.Count)];
                         GameObject obj = Instantiate(AestheticPrefab);
                         obj.GetComponent<SpriteRenderer>().sprite = chosen.sprite;
-                        obj.transform.position = new Vector2(i, j);
+                        obj.transform.position = new Vector2(i, j-chosen.offSet);
                         chosen.placeAesthetic(i, j, map);
                         mapObjects.Add(obj);
                     }
