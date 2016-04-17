@@ -30,7 +30,7 @@ public class Map {
 
 		// layer 1 platforms
 		int x0 = 0;
-		int x1 = 0;
+        int x1 = Random.Range(10, 15) ;
 		int y0 = baseHeight + bufferZone;
 		int y1  = baseHeight + bufferZone;
 		int gap = Random.Range(bgap - dgap, bgap + dgap);
