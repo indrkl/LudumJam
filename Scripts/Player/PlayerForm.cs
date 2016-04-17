@@ -17,6 +17,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
     public Vector2 colliderSize;
     public Vector2 colliderOffset;
+    public Vector3 localScale;
 
     public float mass;
 
@@ -55,6 +56,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         cp.jumpHeight = forms[currentForm].jumpHeight;
         bc.size = forms[currentForm].colliderSize;
         bc.offset = forms[currentForm].colliderOffset;
+        transform.localScale = forms[currentForm].localScale;
 
         rb.mass = forms[currentForm].mass;
     }
