@@ -11,7 +11,7 @@ public class Map {
 	public int dlength = 2;
 
 	private int baseHeight = 2;
-	private int bufferZone = 3;
+	private int bufferZone = 4;
 
 
     public Map()
@@ -68,7 +68,6 @@ public class Map {
 					x1 = x0 + length + gap;
 					dy = Random.Range (1, 3);
 					y1 = Mathf.Min (Mathf.Max (currentHeight + bufferZone, Random.Range (y0 - dy, y0 + dy)), Y - 2);
-					Debug.Log (x1 + " " + y1 + "TEST");
 
 				}
 			}
