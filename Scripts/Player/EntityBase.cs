@@ -79,7 +79,6 @@ public abstract class EntityBase : MonoBehaviour {
                 if(feet.IsTouchingLayers())
                     lastJumpTime = Time.time;
                 body.velocity = new Vector2(body.velocity.x, jump);
-                anim.SetTrigger("Jump");
                 //body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }
         }
