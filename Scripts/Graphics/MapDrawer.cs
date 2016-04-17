@@ -53,7 +53,7 @@ public class MapDrawer : MonoBehaviour {
 			// Generate random scene aesthetic objects
 			yCoordinates = getYcoordinates(map.filled[i]);
 			for (int j = 0; j < yCoordinates.Count; j++) {
-				if (Random.value > aestheticsDensity) {
+				if (Random.value < aestheticsDensity) {
 					GameObject obj = Instantiate (AestheticPrefab);
 					obj.GetComponent<SpriteRenderer> ().sprite = AesthericSprites[Random.Range(0, AesthericSprites.Count)];
 					obj.transform.position = new Vector2 (i, yCoordinates [j]);
