@@ -11,8 +11,7 @@ public class MapDrawer : MonoBehaviour {
 	public GameObject AestheticPrefab;
 	public float aestheticsDensity = 0.9f;
 
-	public List<Sprite> AestheticSpritesBig;
-	public List<Sprite> AestheticSpritesSmall;
+    public List<Aesthetic> AestheticSprites;
 
 	private List<int> yCoordinates;
 
@@ -52,34 +51,30 @@ public class MapDrawer : MonoBehaviour {
             }
 
 			// Generate random scene aesthetic objects
-			yCoordinates = getYcoordinates(map.filled[i]);
-			for (int j = 0; j < yCoordinates.Count; j++) {
-				if (Random.value < aestheticsDensity / 2) {
-					GameObject obj = Instantiate (AestheticPrefab);
-					obj.GetComponent<SpriteRenderer> ().sprite = AestheticSpritesBig[Random.Range(0, AestheticSpritesBig.Count)];
-					obj.transform.position = new Vector2 (i, yCoordinates [j]);
-					mapObjects.Add (obj);
-				}
-
-				if (Random.value < aestheticsDensity) {
-					GameObject obj = Instantiate (AestheticPrefab);
-					obj.GetComponent<SpriteRenderer> ().sprite = AestheticSpritesSmall[Random.Range(0, AestheticSpritesSmall.Count)];
-					obj.transform.position = new Vector2 (i, yCoordinates [j]);
-					mapObjects.Add (obj);
-				}
+			for (int j = 1; j < map.YSize; j++) {
+                if (map.filled[i][j])
+                    continue;
+                if(Random.value < aestheticsDensity)
+                {
+                    List<Aesthetic> options = new List<Aesthetic>();
+                    int room = Aesthetic.getRoomMultiplier(i, j, map);
+                    foreach(Aesthetic ae in AestheticSprites)
+                    {
+                        if (ae.fitsInOptimized(room))
+                            options.Add(ae);
+                    }
+                    if(options.Count > 0)
+                    {
+                        Aesthetic chosen = options[Random.Range(0, options.Count)];
+                        GameObject obj = Instantiate(AestheticPrefab);
+                        obj.GetComponent<SpriteRenderer>().sprite = chosen.sprite;
+                        obj.transform.position = new Vector2(i, j);
+                        chosen.placeAesthetic(i, j, map);
+                        mapObjects.Add(obj);
+                    }
+                }
 			}
         }
 
     }
-
-	private List<int> getYcoordinates(bool[] boolMap) {
-		List<int> res = new List<int>();
-		for (int i = 1; i < boolMap.Length- 1; i++) {
-			if (boolMap [i] == true && boolMap [i + 1] == false) {
-				res.Add(i+1);
-			}
-		}
-		return res;
-	}
-
 }

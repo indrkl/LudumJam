@@ -16,12 +16,10 @@ public class Map {
 
     public Map()
     {
-        filled = new List<bool[]>();
-        aestheticFilled = new List<bool[]>();
     }
 
-    public List<bool[]> filled;
-    public List<bool[]> aestheticFilled;
+    public bool[][] filled;
+    public bool[][] aestheticFilled;
 
     public void initiate(int X, int Y)
     {
@@ -41,14 +39,16 @@ public class Map {
 
 		// Height of the bedrock
         int nextUpdate = Random.Range(9, 20);
+        filled = new bool[X][];
+        aestheticFilled = new bool[X][];
         for(int i = 0; i < X; i++){
             if (i > nextUpdate)
             {
 				currentHeight = Mathf.Max(baseHeight, Mathf.Min(5, currentHeight + Random.Range(-1, 2)));
                 nextUpdate = i + Random.Range(1, 10);
             }
-            filled.Add(new bool[Y]);
-            aestheticFilled.Add(new bool[Y]);
+            filled[i] = new bool[Y];
+            aestheticFilled[i] = new bool[Y];
             for(int j = 1; j < Y; j++)
             {
                 filled[i][j] = false;
