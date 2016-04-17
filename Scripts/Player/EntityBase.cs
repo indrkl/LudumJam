@@ -15,6 +15,8 @@ public abstract class EntityBase : MonoBehaviour {
     public Rigidbody2D body;
     public BoxCollider2D box;
 
+    public CircleCollider2D circle;
+
     void Start()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
@@ -29,18 +31,16 @@ public abstract class EntityBase : MonoBehaviour {
         if (Mathf.Abs(movement) > 0.01)
         {
             anim.SetFloat("Speed", 1);
-            //anim.Play("catRun", 0);
         }
         else
         {
             anim.SetFloat("Speed", 0);
         }
 
-
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
-            if (box.IsTouchingLayers())
+            if (circle.IsTouchingLayers())
             {
                 body.velocity = new Vector2(body.velocity.x, jump);
             }

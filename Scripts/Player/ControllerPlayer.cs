@@ -6,9 +6,6 @@ public class ControllerPlayer : EntityBase {
     public float cooldown;
     float cd_remaining;
     public bool trample;
-    //state that the player spawns in
-
-
 
     void Start()
     {
@@ -35,6 +32,7 @@ public class ControllerPlayer : EntityBase {
             cd_remaining = cooldown;
         }
 
+        //attack cooldown control
         if (cd_remaining > 0)
         {
             cd_remaining -= Time.deltaTime;
@@ -44,31 +42,16 @@ public class ControllerPlayer : EntityBase {
             cd_remaining = 0;
         }
 
-        AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
-
-        if (Mathf.Abs(movement) < 0.05 && currentState.IsName("CatIdle"))
-        {
-            anim.SetBool("IsIdle", true);
-        }
-        else
-        {
-            anim.SetBool("IsIdle", false);
-        }
-
-        if (Mathf.Abs(movement) > 0.05 && currentState.IsName("CatRun"))
-        {
-            anim.SetBool("IsRunning", true);
-        }
-        else
-        {
-            anim.SetBool("IsRunning", false);
-        }
-
+        //set animation controller to current form
         anim.SetInteger("Form", form.currentForm);
 
+        //get keyboard input for movement
         movement = Input.GetAxis("Horizontal") * speed;
         jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
+        //call update function that is shared between all entities
         base.OnUpdate();
+
+
     }
 }
