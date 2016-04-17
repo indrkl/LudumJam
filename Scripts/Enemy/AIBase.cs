@@ -9,7 +9,8 @@ public class AIBase : EntityBase {
 	// Use this for initialization
 	void Start () {
 
-        
+        foreach (AIBehaviour beh in behaviours)
+            beh.ai = this;
     }
 	
 	// Update is called once per frame
