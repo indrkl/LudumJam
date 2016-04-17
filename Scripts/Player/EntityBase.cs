@@ -27,7 +27,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
-        curLife -= damage * damageLowerer[dir];
+		curLife = Mathf.Max (curLife - damage * damageLowerer [dir]);
         if (curLife <= 0)
             Die();
     }

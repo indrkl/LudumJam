@@ -7,9 +7,12 @@ public class SoundManager : MonoBehaviour
 	public AudioSource efxSource;
 	public AudioSource musicSource;
 	public AudioSource tempSource;
+	public AudioSource tempSfxSource;
+
 	public static SoundManager instance = null;
-	public AudioClip newTheme = null;
 	public float fadeSpeed = 1.0f;
+	public AudioClip newTheme = null;
+	public AudioClip newSfx;
 
 	public float lowPitchRange = 0.95f;
 	public float highPitchRange = 1.05f;
@@ -81,5 +84,33 @@ public class SoundManager : MonoBehaviour
 			tempSource.volume = Mathf.Lerp(tempSource.volume, 1.0f, fadeSpeed * dt);
 			musicSource.volume = Mathf.Lerp (musicSource.volume, 0f, fadeSpeed * dt);
 		} 
+	}
+
+	public void FadeSfx(AudioClip newSfx, float dt) 
+	{
+		float maxSound = 0.5f;
+		// This gets called in update function.
+		// If new clip is requested
+		if (tempSfxSource.clip != newSfx) {
+			// if there is a clip playing already
+			if (tempSfxSource.clip != null) 
+			{
+				efxSource.clip = tempSfxSource.clip;
+				efxSource.Play ();
+				efxSource.time = tempSfxSource.time;
+				efxSource.volume = tempSfxSource.volume;
+				tempSfxSource.volume = 0f;
+			}
+			// Set the new theme, and start fading in
+			tempSfxSource.clip = newSfx;
+			tempSfxSource.Play ();
+
+		}
+
+		// if theme has been set already
+		if (tempSource.clip != null) {
+			tempSource.volume = Mathf.Lerp(tempSource.volume, maxSound, fadeSpeed * dt);
+			efxSource.volume = Mathf.Lerp (efxSource.volume, 0f, fadeSpeed * dt);
+		}
 	}
 }
