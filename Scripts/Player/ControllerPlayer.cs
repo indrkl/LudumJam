@@ -74,13 +74,13 @@ public class ControllerPlayer : EntityBase {
         Vector3 point4 = transform.position + new Vector3(0, height, 0) + horizontalMove.normalized * (distance + 0.5f * width);
 
         //print(Physics2D.Linecast(point1, point2, 1 << LayerMask.NameToLayer("Ground")));
-        if (Physics2D.Linecast(point1, point2, 1 << LayerMask.NameToLayer("Ground")) || Physics2D.Linecast(point3, point4, 1 << LayerMask.NameToLayer("Ground")))
+        /*if (Physics2D.Linecast(point1, point2, 1 << LayerMask.NameToLayer("Ground")) || Physics2D.Linecast(point3, point4, 1 << LayerMask.NameToLayer("Ground")))
         {
             body.velocity = new Vector2(0, body.velocity.y);
         }
         else
         {
             body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
-        }
+        }*/
     }
 }

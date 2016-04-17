@@ -71,7 +71,7 @@ public abstract class EntityBase : MonoBehaviour {
         }
 
         //test if jump is possible
-        if (Mathf.Abs(jump) > 0.1 && (Time.time - lastJumpTime) >= 0.2f)
+        if (Mathf.Abs(jump) > 0.1 || (Time.time - lastJumpTime) < 0.2f)
         {
 
             if (feet.IsTouchingLayers())
@@ -79,8 +79,8 @@ public abstract class EntityBase : MonoBehaviour {
                 lastJumpTime = Time.time;
                 Debug.Log("Jumping");
                 //body.velocity = new Vector2(body.velocity.x, jump);
-                Debug.Log(body.velocity.y + " " + jump);
-                body.AddForce(new Vector2(0, Mathf.Max(0, jump - Mathf.Max(0, body.velocity.y)) * 80 * body.mass));
+                Debug.Log(body.velocity.y + " " + jumpHeight);
+                body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }
         }
 
