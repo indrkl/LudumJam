@@ -17,6 +17,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
     public Vector2 colliderSize;
     public Vector2 colliderOffset;
+    public Vector3 localScale;
 
     public float mass;
 
@@ -24,6 +25,9 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public BoxCollider2D bc;
     public ControllerPlayer cp;
     public ParticleSystem psys;
+	public SoundManager soundManager;
+
+	public AudioClip transformSound;
 
     public static List<PlayerForm> forms;
 
@@ -43,6 +47,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         if (currentForm != newForm)
         {
             psys.Play();
+			soundManager.PlaySingle (transformSound);
         }
         currentForm = newForm;
         Debug.Log(forms[currentForm].formNumber + " " + newForm);
@@ -51,6 +56,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         cp.jumpHeight = forms[currentForm].jumpHeight;
         bc.size = forms[currentForm].colliderSize;
         bc.offset = forms[currentForm].colliderOffset;
+        transform.localScale = forms[currentForm].localScale;
 
         rb.mass = forms[currentForm].mass;
     }
