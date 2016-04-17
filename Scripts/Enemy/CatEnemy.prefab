@@ -13,6 +13,7 @@ GameObject:
   - 50: {fileID: 5008920}
   - 95: {fileID: 9534666}
   - 114: {fileID: 11479614}
+  - 58: {fileID: 5827482}
   m_Layer: 0
   m_Name: CatEnemy
   m_TagString: Untagged
@@ -49,6 +50,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &5827482
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157758}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.09, y: 0.12}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!61 &6157976
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -99,6 +114,7 @@ MonoBehaviour:
   anim: {fileID: 9534666}
   body: {fileID: 5008920}
   box: {fileID: 6157976}
+  circle: {fileID: 5827482}
 --- !u!212 &21263464
 SpriteRenderer:
   m_ObjectHideFlags: 1

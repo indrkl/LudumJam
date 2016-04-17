@@ -3,19 +3,20 @@ using System.Collections;
 
 public class ControllerPlayer : EntityBase {
     public PlayerForm form;
-
-    //state that the player spawns in
-
-
+    public float cooldown;
+    float cd_remaining;
+    public bool trample;
 
     void Start()
     {
         form = gameObject.GetComponent<PlayerForm>();
+        cd_remaining = 0;
 
         //get player maximum speed and jump height
     }
 
     void Update () {        
+        //switch form
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             form.SwitchForm(1);
@@ -23,32 +24,34 @@ public class ControllerPlayer : EntityBase {
         {
             form.SwitchForm(0);
         }
-        
-        AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
 
-        if (Mathf.Abs(movement) < 0.05 && currentState.IsName("CatIdle"))
+        //attack
+        if (Input.GetKeyDown(KeyCode.Q) && cd_remaining == 0)
         {
-            anim.SetBool("IsIdle", true);
-        }
-        else
-        {
-            anim.SetBool("IsIdle", false);
+            anim.SetTrigger("Attack");
+            cd_remaining = cooldown;
         }
 
-        if (Mathf.Abs(movement) > 0.05 && currentState.IsName("CatRun"))
+        //attack cooldown control
+        if (cd_remaining > 0)
         {
-            anim.SetBool("IsRunning", true);
+            cd_remaining -= Time.deltaTime;
         }
-        else
+        if (cd_remaining < 0)
         {
-            anim.SetBool("IsRunning", false);
+            cd_remaining = 0;
         }
 
+        //set animation controller to current form
         anim.SetInteger("Form", form.currentForm);
 
+        //get keyboard input for movement
         movement = Input.GetAxis("Horizontal") * speed;
         jump = Input.GetAxisRaw("Jump") * jumpHeight;
 
+        //call update function that is shared between all entities
         base.OnUpdate();
+
+
     }
 }

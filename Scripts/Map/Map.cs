@@ -50,13 +50,12 @@ public class Map {
 		int x1 = 0;
 		int y0 = baseHeight + bufferZone;
 		int y1  = baseHeight + bufferZone;
+		int gap = Random.Range(bgap - dgap, bgap + dgap);
+		int  length = Random.Range(blength -  dlength, blength + dlength); 
+		int dy = 0;
 
 		for (int i = 1; i < X - 1; i++) 
 		{
-			// generate current gap, length, and init slope
-			int gap = Random.Range(bgap - dgap, bgap + dgap);
-			int  length = Random.Range(blength -  dlength, blength + dlength); 
-
 			// if j is in between the platform coordinates
 			if (i >= x1 && i <= x1 + length)
 			{
@@ -70,7 +69,8 @@ public class Map {
 					gap = Random.Range(bgap - dgap, bgap + dgap); 
 					length = Random.Range(blength -  dlength, blength + dlength);
 					x1 = x0 + length + gap;
-					y1 = Mathf.Max (4, Mathf.Min (Random.Range ((x1 - x0) / 2 - y0, (x1 - x0) * 2 - y0), Y - 1));
+					dy = Random.Range (0, 2);
+					y1 = Mathf.Min (Mathf.Max (currentHeight + bufferZone, Random.Range (y0 - dy, y0 + dy)), Y - 2);
 					Debug.Log (x1 + " " + y1 + "TEST");
 
 				}
