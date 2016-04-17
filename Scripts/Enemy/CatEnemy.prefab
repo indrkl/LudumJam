@@ -109,13 +109,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 15
+  debug: 0
+  damageLowerer: []
+  maxLife: 0
+  curLife: 0
+  threatLevel: 0
   movement: 0
   jump: 0
   startingForm: 0
   anim: {fileID: 9534666}
   body: {fileID: 5008920}
   box: {fileID: 6157976}
+  alive: 1
+  circle: {fileID: 0}
   feet: {fileID: 0}
+  lastJumpTime: 0
   behaviours:
   - {fileID: 11473526}
 --- !u!212 &21263464

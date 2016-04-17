@@ -13,6 +13,7 @@ public class PlayerForm : MonoBehaviour {
     public Rigidbody2D rb;
     public BoxCollider2D bc;
     public ControllerPlayer cp;
+    public ParticleSystem psys;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,13 @@ public class PlayerForm : MonoBehaviour {
 	}
 
     public void SwitchForm (int newForm) {
+
+        if (currentForm != newForm)
+        {
+
+        }
         currentForm = newForm;
+        psys.Play();
 
         if (newForm == 0)
         {
