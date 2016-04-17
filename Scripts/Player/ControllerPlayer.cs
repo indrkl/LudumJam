@@ -20,11 +20,16 @@ public class ControllerPlayer : EntityBase {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             form.SwitchForm(1);
-        } else if (Input.GetKeyDown(KeyCode.Alpha2))
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             form.SwitchForm(0);
         }
-
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            form.SwitchForm(2);
+        }
+            
         //attack
         if (Input.GetKeyDown(KeyCode.Q) && cd_remaining == 0)
         {

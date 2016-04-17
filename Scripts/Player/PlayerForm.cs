@@ -70,6 +70,6 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public bool Equals(PlayerForm other)
     {
         if (other == null) return false;
-        return (this.formNumber == other.formNumber);
+        return (this.formNumber == other.formNumber);    
     }
 }
