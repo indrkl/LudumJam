@@ -14,7 +14,7 @@ GameObject:
   - 61: {fileID: 6173224}
   - 95: {fileID: 9532830}
   - 58: {fileID: 5839004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
