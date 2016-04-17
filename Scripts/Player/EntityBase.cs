@@ -47,6 +47,8 @@ public abstract class EntityBase : MonoBehaviour {
 
     void Start()
     {
+        print(startingForm);
+        anim.SetInteger("Form", startingForm);
         lastJumpTime = -5;
         body = gameObject.GetComponent<Rigidbody2D>();
         //get player maximum speed and jump height
