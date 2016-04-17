@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11479614}
   - 114: {fileID: 11473526}
   - 58: {fileID: 5871112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CatEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,6 +140,8 @@ MonoBehaviour:
   body: {fileID: 5008920}
   box: {fileID: 6157976}
   alive: 1
+  cooldown: 0
+  cd_remaining: 0
   feet: {fileID: 5871112}
   lastJumpTime: 0
   behaviours:

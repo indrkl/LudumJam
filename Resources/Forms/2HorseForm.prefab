@@ -47,12 +47,18 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 0.282}
   localScale: {x: 3, y: 3, z: 1}
   mass: 25
+  cooldown: 0
   rb: {fileID: 0}
   bc: {fileID: 0}
   cp: {fileID: 0}
   psys: {fileID: 0}
   soundManager: {fileID: 0}
   transformSound: {fileID: 0}
+  damageLowerer:
+  - 1
+  - 1
+  - 1
+  - 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

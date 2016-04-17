@@ -188,6 +188,7 @@ public abstract class EntityBase : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Linecast(point1, point2, 1 << 8);
             if (hit)
             {
+                print(hit.transform.gameObject);
                 hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(25f, 1);
             }
             

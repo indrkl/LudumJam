@@ -109,7 +109,11 @@ MonoBehaviour:
   speed: 0
   jumpHeight: 0
   debug: 0
-  damageLowerer: []
+  damageLowerer:
+  - 1
+  - 1
+  - 1
+  - 1
   maxLife: 100
   curLife: 100
   threatLevel: 0
