@@ -28,6 +28,8 @@ public abstract class EntityBase : MonoBehaviour {
     public float cooldown; //ability cooldown for enemies, players get their cooldown from playerForm
     public float cd_remaining = 0;  //cooldown remaining til you can attack again
 
+    Vector2 lastVelocity;
+
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
         curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
@@ -61,8 +63,22 @@ public abstract class EntityBase : MonoBehaviour {
     {
         if (debug)
             Debug.Log("Is updating");
-        body.velocity = new Vector2(movement, body.velocity.y);
-        //body.AddForce(new Vector2((movement - body.velocity.x), 0));
+
+        try
+        {
+            PlayerForm form = gameObject.GetComponent<PlayerForm>();
+            if (form.currentForm == 1) {
+                body.velocity = lastVelocity;
+            }
+            else
+            {
+                body.velocity = new Vector2(movement, body.velocity.y);
+            }
+        }
+        catch (System.Exception e) {
+            body.velocity = new Vector2(movement, body.velocity.y);
+        }
+        
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
@@ -108,6 +124,8 @@ public abstract class EntityBase : MonoBehaviour {
         {
             cd_remaining = 0;
         }
+
+        lastVelocity = body.velocity;
 
     }
 
