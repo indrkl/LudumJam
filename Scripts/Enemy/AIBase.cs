@@ -17,7 +17,7 @@ public class AIBase : EntityBase {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
         AIBehaviour bestBehaviour = null;
         foreach(AIBehaviour beh in behaviours)
         {
