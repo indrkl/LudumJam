@@ -108,8 +108,8 @@ public class SoundManager : MonoBehaviour
 		}
 
 		// if theme has been set already
-		if (tempSource.clip != null) {
-			tempSource.volume = Mathf.Lerp(tempSource.volume, maxSound, fadeSpeed * dt);
+		if (tempSfxSource.clip != null) {
+			tempSfxSource.volume = Mathf.Lerp(tempSfxSource.volume, maxSound, fadeSpeed * dt);
 			efxSource.volume = Mathf.Lerp (efxSource.volume, 0f, fadeSpeed * dt);
 		}
 	}
