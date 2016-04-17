@@ -14,6 +14,7 @@ GameObject:
   - 61: {fileID: 6161938}
   - 95: {fileID: 9595646}
   - 58: {fileID: 5895290}
+  - 114: {fileID: 11483446}
   m_Layer: 0
   m_Name: HorseEnemy
   m_TagString: Untagged
@@ -77,7 +78,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.28200004}
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 0.48}
+  m_Size: {x: 0.73, y: 0.55}
 --- !u!95 &9595646
 Animator:
   serializedVersion: 3
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a554e11215176746bec81492325c4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   jumpHeight: 8
   debug: 0
   damageLowerer: []
@@ -122,8 +123,23 @@ MonoBehaviour:
   alive: 1
   feet: {fileID: 5895290}
   lastJumpTime: 0
-  lastVelocity: {x: 0, y: 0, z: 0}
-  behaviours: []
+  behaviours:
+  - {fileID: 11483446}
+--- !u!114 &11483446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a818df5bfec815b45b3f9352970389cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 0}
+  priority: 0
+  right: 1
+  lastChange: 0
 --- !u!212 &21216710
 SpriteRenderer:
   m_ObjectHideFlags: 1

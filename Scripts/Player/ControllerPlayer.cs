@@ -29,7 +29,11 @@ public class ControllerPlayer : EntityBase {
         {
             form.SwitchForm(2);
         }
-            
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            form.SwitchForm(3);
+        }
+
         //attack
         if (Input.GetKeyDown(KeyCode.Q) && cd_remaining == 0)
         {

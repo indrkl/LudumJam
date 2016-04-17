@@ -8,8 +8,6 @@ public class AIBase : EntityBase {
 
 	// Use this for initialization
 	void Start () {
-
-        print(startingForm);
         anim.SetInteger("Form", startingForm);
 
         foreach (AIBehaviour beh in behaviours)

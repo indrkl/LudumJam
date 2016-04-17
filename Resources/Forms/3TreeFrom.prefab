@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 494214}
   - 114: {fileID: 11432878}
   m_Layer: 0
-  m_Name: 2HorseForm
+  m_Name: 3TreeFrom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,13 +40,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentForm: 0
-  formNumber: 2
-  speed: 4
-  jumpHeight: 8
-  colliderSize: {x: 0.73, y: 0.55}
-  colliderOffset: {x: 0, y: 0.282}
-  localScale: {x: 3, y: 3, z: 1}
-  mass: 25
+  formNumber: 3
+  speed: 0
+  jumpHeight: 0
+  colliderSize: {x: 0.57, y: 0.67}
+  colliderOffset: {x: 0, y: 0.34}
+  localScale: {x: 2.3, y: 2.3, z: 1}
+  mass: 10
   rb: {fileID: 0}
   bc: {fileID: 0}
   cp: {fileID: 0}
