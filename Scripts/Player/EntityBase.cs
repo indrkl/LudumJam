@@ -76,8 +76,12 @@ public abstract class EntityBase : MonoBehaviour {
 
             if (((feet.IsTouchingLayers() && (Time.time - lastJumpTime) >= 0.3f)) || (Time.time - lastJumpTime < 0.2f))
             {
-                if(feet.IsTouchingLayers())
+                if (feet.IsTouchingLayers())
+                {
                     lastJumpTime = Time.time;
+                    anim.SetTrigger("Jump");
+                    
+                }
                 body.velocity = new Vector2(body.velocity.x, jump);
                 //body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }

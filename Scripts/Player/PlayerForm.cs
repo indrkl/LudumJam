@@ -53,5 +53,15 @@ public class PlayerForm : MonoBehaviour {
 
             rb.mass = 3;
         }
+        else if (newForm == 2)
+        {
+            cp.speed = 3;
+            cp.jumpHeight = 10;
+
+            bc.size = new Vector2(0.56f, 0.43f);
+            bc.offset = new Vector2(0, 0.23f);
+
+            rb.mass = 5;
+        }
     }
 }
