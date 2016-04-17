@@ -25,10 +25,13 @@ public abstract class EntityBase : MonoBehaviour {
 
     public bool alive = true;
 
+    public float cooldown; //ability cooldown for enemies, players get their cooldown from playerForm
+    public float cd_remaining = 0;  //cooldown remaining til you can attack again
+
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
-		curLife = Mathf.Max (curLife - damage * damageLowerer [dir]);
-        if (curLife <= 0)
+        curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
+		if (curLife <= 0)
             Die();
     }
 
@@ -63,7 +66,6 @@ public abstract class EntityBase : MonoBehaviour {
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
-            print("set speed to 1");
             anim.SetFloat("Speed", 1);
         }
         else
@@ -99,6 +101,14 @@ public abstract class EntityBase : MonoBehaviour {
             direction = "LEFT";
             GetComponent<SpriteRenderer>().flipX = false;
         }
+
+        //scale cooldown down
+        cd_remaining -= Time.deltaTime;
+        if (cd_remaining < 0)
+        {
+            cd_remaining = 0;
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D c)
@@ -153,5 +163,37 @@ public abstract class EntityBase : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void MeleeAttack()
+    {
+        float AttackRange = 2f;
+
+        if (cd_remaining >= 0)
+        {
+            anim.SetTrigger("Attack");
+            cd_remaining = cooldown;
+
+            Vector2 point1 = new Vector2(transform.position.x, transform.position.y + 0.3f);
+            Vector2 point2;
+
+            if (direction == "RIGHT")
+            {
+                point2 = new Vector2(transform.position.x + AttackRange, transform.position.y + 0.3f);
+            } else
+            {
+                point2 = new Vector2(transform.position.x - AttackRange, transform.position.y + 0.3f);
+            }
+
+            RaycastHit2D hit = Physics2D.Linecast(point1, point2, 1 << 8);
+            if (hit)
+            {
+                hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(25f, 1);
+            }
+            
+        }
+       
+
+
     }
 }
