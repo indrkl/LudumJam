@@ -11,7 +11,8 @@ public class MapDrawer : MonoBehaviour {
 	public GameObject AestheticPrefab;
 	public float aestheticsDensity = 0.9f;
 
-	public List<Sprite> AesthericSprites;
+	public List<Sprite> AestheticSpritesBig;
+	public List<Sprite> AestheticSpritesSmall;
 
 	private List<int> yCoordinates;
 
@@ -53,13 +54,18 @@ public class MapDrawer : MonoBehaviour {
 			// Generate random scene aesthetic objects
 			yCoordinates = getYcoordinates(map.filled[i]);
 			for (int j = 0; j < yCoordinates.Count; j++) {
-				if (Random.value < aestheticsDensity) {
+				if (Random.value < aestheticsDensity / 2) {
 					GameObject obj = Instantiate (AestheticPrefab);
-					obj.GetComponent<SpriteRenderer> ().sprite = AesthericSprites[Random.Range(0, AesthericSprites.Count)];
+					obj.GetComponent<SpriteRenderer> ().sprite = AestheticSpritesBig[Random.Range(0, AestheticSpritesBig.Count)];
 					obj.transform.position = new Vector2 (i, yCoordinates [j]);
 					mapObjects.Add (obj);
+				}
 
-
+				if (Random.value < aestheticsDensity) {
+					GameObject obj = Instantiate (AestheticPrefab);
+					obj.GetComponent<SpriteRenderer> ().sprite = AestheticSpritesSmall[Random.Range(0, AestheticSpritesSmall.Count)];
+					obj.transform.position = new Vector2 (i, yCoordinates [j]);
+					mapObjects.Add (obj);
 				}
 			}
         }
