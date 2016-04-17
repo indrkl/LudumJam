@@ -20,6 +20,7 @@ public class Map {
     }
 
     public List<bool[]> filled;
+    public List<bool[]> aestheticFilled;
 
     public void initiate(int X, int Y)
     {
@@ -46,9 +47,11 @@ public class Map {
                 nextUpdate = i + Random.Range(1, 10);
             }
             filled.Add(new bool[Y]);
+            aestheticFilled.Add(new bool[Y]);
             for(int j = 1; j < Y; j++)
             {
                 filled[i][j] = false;
+                aestheticFilled[i][j] = false;
                 if (j!= 0 && j <= currentHeight && i != 0 && i != X - 1)
                     filled[i][j] = true;
             }
