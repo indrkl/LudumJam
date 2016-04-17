@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class EntityBase : MonoBehaviour {
     public float speed;
     public float jumpHeight;
+    public bool debug = false;
 
     public float[] damageLowerer;
 
@@ -24,7 +25,6 @@ public abstract class EntityBase : MonoBehaviour {
 
     public bool alive = true;
 
-    public CircleCollider2D circle;
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
         curLife -= damage * damageLowerer[dir];
@@ -47,14 +47,19 @@ public abstract class EntityBase : MonoBehaviour {
 
     void Start()
     {
+        lastJumpTime = -5;
         body = gameObject.GetComponent<Rigidbody2D>();
         //get player maximum speed and jump height
     }
 
+    public float lastJumpTime;
+
     public void OnUpdate()
     {
-        body.velocity = new Vector2(movement, body.velocity.y);
-
+        if (debug)
+            Debug.Log("Is updating");
+        //body.velocity = new Vector2(movement, body.velocity.y);
+        body.AddForce(new Vector2((movement - body.velocity.x), 0));
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
@@ -69,9 +74,14 @@ public abstract class EntityBase : MonoBehaviour {
         if (Mathf.Abs(jump) > 0.1)
         {
 
-            if (feet.IsTouchingLayers())
+            if (((feet.IsTouchingLayers() && (Time.time - lastJumpTime) >= 0.5f)) || (Time.time - lastJumpTime < 0.5f))
             {
-                body.velocity = new Vector2(body.velocity.x, jump);
+                if(feet.IsTouchingLayers())
+                    lastJumpTime = Time.time;
+                Debug.Log("Jumping " + Time.time);
+                //body.velocity = new Vector2(body.velocity.x, jump);
+                Debug.Log(body.velocity.y + " " + jumpHeight);
+                body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }
         }
 
@@ -86,7 +96,6 @@ public abstract class EntityBase : MonoBehaviour {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D c)

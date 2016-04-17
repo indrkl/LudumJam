@@ -38,12 +38,12 @@ public class Map {
 		int dy = 0;
 
 		// Height of the bedrock
-        int nextUpdate = Random.Range(4, 8);
+        int nextUpdate = Random.Range(9, 20);
         for(int i = 0; i < X; i++){
             if (i > nextUpdate)
             {
 				currentHeight = Mathf.Max(baseHeight, Mathf.Min(5, currentHeight + Random.Range(-1, 2)));
-                nextUpdate = i + Random.Range(1, 3);
+                nextUpdate = i + Random.Range(1, 10);
             }
             filled.Add(new bool[Y]);
             for(int j = 1; j < Y; j++)
