@@ -4,7 +4,7 @@ using System.Collections;
 public class Tile : MonoBehaviour {
     //0 - top, 1 - right, 2 - bottom, 3 - left
     public bool[] openEnd;
-    public bool canRotate;
+	public bool canRotate;
 
     public Sprite sprite;
 
