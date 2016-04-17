@@ -7,7 +7,6 @@ public class BasicWalk : AIBehaviour {
     public float lastChange;
 
     public override void OnUpdate() {
-        Physics2D.Linecast(transform.position + new Vector3(0, 0.1f, 0), transform.position, 1 << LayerMask.NameToLayer("Ground"));
         Vector3 lookingAt = Vector2.left;
         if (right)
             lookingAt = Vector2.right;

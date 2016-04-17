@@ -7,6 +7,13 @@ public class ControllerPlayer : EntityBase {
     float cd_remaining;
     public bool trample;
 
+    public static ControllerPlayer instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         form = gameObject.GetComponent<PlayerForm>();
@@ -56,7 +63,7 @@ public class ControllerPlayer : EntityBase {
 
         //get keyboard input for movement
         movement = Input.GetAxis("Horizontal") * speed;
-        jump = Input.GetAxisRaw("Jump") * jumpHeight;
+        jump = Input.GetAxisRaw("Jump");
 
         //call update function that is shared between all entities
         base.OnUpdate();

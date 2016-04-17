@@ -83,7 +83,7 @@ public abstract class EntityBase : MonoBehaviour {
                     anim.SetTrigger("Jump");
                     
                 }
-                body.velocity = new Vector2(body.velocity.x, jump);
+                body.velocity = new Vector2(body.velocity.x, jumpHeight);
                 //body.AddForce(new Vector2(0, Mathf.Max(0, jump - body.velocity.y) * 30 * body.mass));
             }
         }
@@ -92,12 +92,12 @@ public abstract class EntityBase : MonoBehaviour {
         if (movement > 0)
         {
             direction = "RIGHT";
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (movement < 0)
         {
             direction = "LEFT";
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 
