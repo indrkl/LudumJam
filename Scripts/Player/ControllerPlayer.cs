@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ControllerPlayer : EntityBase {
     public PlayerForm form;
-    public float cooldown;
-    float cd_remaining;
     public bool trample;
 
     public static ControllerPlayer instance;
@@ -17,9 +15,7 @@ public class ControllerPlayer : EntityBase {
     void Start()
     {
         form = gameObject.GetComponent<PlayerForm>();
-        cd_remaining = 0;
-
-        //get player maximum speed and jump height
+        cooldown = form.cooldown;
     }
 
     void LateUpdate () {        
@@ -45,17 +41,7 @@ public class ControllerPlayer : EntityBase {
         if (Input.GetKeyDown(KeyCode.Q) && cd_remaining == 0)
         {
             anim.SetTrigger("Attack");
-            cd_remaining = cooldown;
-        }
-
-        //attack cooldown control
-        if (cd_remaining > 0)
-        {
-            cd_remaining -= Time.deltaTime;
-        }
-        if (cd_remaining < 0)
-        {
-            cd_remaining = 0;
+            MeleeAttack();
         }
 
         //set animation controller to current form

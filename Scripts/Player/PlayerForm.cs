@@ -20,6 +20,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public Vector3 localScale;
 
     public float mass;
+    public float cooldown;
 
     public Rigidbody2D rb;
     public BoxCollider2D bc;
@@ -30,9 +31,10 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 	public AudioClip transformSound;
 
     public static List<PlayerForm> forms;
+    public float[] damageLowerer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         forms = new List<PlayerForm>(Resources.LoadAll<PlayerForm>("Forms"));
         forms.Sort();
     }

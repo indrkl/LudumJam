@@ -181,10 +181,11 @@ MonoBehaviour:
   body: {fileID: 5042292}
   box: {fileID: 6147642}
   alive: 1
+  cooldown: 1
+  cd_remaining: 0
   feet: {fileID: 5833152}
   lastJumpTime: 44.352604
   form: {fileID: 11458784}
-  cooldown: 1
   trample: 0
 --- !u!114 &11458784
 MonoBehaviour:
@@ -205,12 +206,14 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 0}
   localScale: {x: 0, y: 0, z: 0}
   mass: 0
+  cooldown: 0
   rb: {fileID: 5042292}
   bc: {fileID: 6147642}
   cp: {fileID: 11420112}
   psys: {fileID: 19830824}
   soundManager: {fileID: 0}
   transformSound: {fileID: 8300000, guid: d50b3ebdc6a1a8a499162db48a106003, type: 3}
+  damageLowerer: []
 --- !u!198 &19830824
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3316,7 +3319,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300002, guid: 03623431bd17b1644b6216951b48665f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
