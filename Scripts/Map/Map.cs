@@ -17,6 +17,7 @@ public class Map {
     public Map()
     {
         filled = new List<bool[]>();
+        aestheticFilled = new List<bool[]>();
     }
 
     public List<bool[]> filled;
