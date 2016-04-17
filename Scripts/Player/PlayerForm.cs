@@ -29,10 +29,9 @@ public class PlayerForm : MonoBehaviour {
 
         if (currentForm != newForm)
         {
-
+            psys.Play();
         }
         currentForm = newForm;
-        psys.Play();
 
         if (newForm == 0)
         {
