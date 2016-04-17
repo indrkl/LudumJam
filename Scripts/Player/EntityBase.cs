@@ -14,8 +14,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     public Rigidbody2D body;
     public BoxCollider2D box;
-
-    public CircleCollider2D circle;
+    public CircleCollider2D feet;
 
     void Start()
     {
@@ -25,7 +24,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     public void OnUpdate()
     {
-        body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
+        body.velocity = new Vector2(movement, body.velocity.y);
 
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
@@ -40,7 +39,8 @@ public abstract class EntityBase : MonoBehaviour {
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
-            if (circle.IsTouchingLayers())
+
+            if (feet.IsTouchingLayers())
             {
                 body.velocity = new Vector2(body.velocity.x, jump);
             }
@@ -57,5 +57,7 @@ public abstract class EntityBase : MonoBehaviour {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
+
     }
+    
 }
