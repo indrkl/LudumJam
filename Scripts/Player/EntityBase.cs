@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class EntityBase : MonoBehaviour {
     public float speed;
     public float jumpHeight;
+    public bool debug = false;
 
     public float[] damageLowerer;
 
@@ -51,10 +52,14 @@ public abstract class EntityBase : MonoBehaviour {
         //get player maximum speed and jump height
     }
 
+    public float lastJumpTime;
+
     public void OnUpdate()
     {
-        body.velocity = new Vector2(movement, body.velocity.y);
-
+        if (debug)
+            Debug.Log("Is updating");
+        //body.velocity = new Vector2(movement, body.velocity.y);
+        body.AddForce(new Vector2((movement - body.velocity.x)*Time.deltaTime, 0));
         //controll movment animation
         if (Mathf.Abs(movement) > 0.01)
         {
@@ -66,12 +71,16 @@ public abstract class EntityBase : MonoBehaviour {
         }
 
         //test if jump is possible
-        if (Mathf.Abs(jump) > 0.1)
+        if (Mathf.Abs(jump) > 0.1 && (Time.time - lastJumpTime) >= 0.2f)
         {
 
             if (feet.IsTouchingLayers())
             {
-                body.velocity = new Vector2(body.velocity.x, jump);
+                lastJumpTime = Time.time;
+                Debug.Log("Jumping");
+                //body.velocity = new Vector2(body.velocity.x, jump);
+                Debug.Log(body.velocity.y + " " + jump);
+                body.AddForce(new Vector2(0, Mathf.Max(0, jump - Mathf.Max(0, body.velocity.y)) * 80 * body.mass));
             }
         }
 
@@ -86,7 +95,6 @@ public abstract class EntityBase : MonoBehaviour {
             direction = "LEFT";
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D c)
