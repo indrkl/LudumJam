@@ -24,7 +24,7 @@ public class CameraScript : MonoBehaviour {
         }
         else yOffSet = yOffSet * 0.9f;
         this.transform.position = new Vector3(player.transform.position.x, Mathf.Max(y, player.transform.position.y) + yOffSet, z);
-        this.transform.rotation = Quaternion.EulerAngles(yOffSet/17.0f, yOffSet/17.0f, yOffSet/17.0f);
+        this.transform.rotation = Quaternion.EulerAngles(yOffSet/23.0f, 4*yOffSet/23.0f, yOffSet/23.0f);
 
         for(int i = 0; i < BG1.Count; i++)
         {
@@ -32,7 +32,7 @@ public class CameraScript : MonoBehaviour {
             curDistance = curDistance % BGLength[i];
             Debug.Log(curDistance);
             BG1[i].transform.position = new Vector3(this.transform.position.x - curDistance, BG1[i].transform.position.y, BG1[i].transform.position.z);
-            BG2[i].transform.position = BG1[i].transform.position + new Vector3(BGLength[i], 0, 0);
+            BG2[i].transform.localPosition = BG1[i].transform.localPosition + new Vector3(BGLength[i], 0, 0);
         }
 	}
 
