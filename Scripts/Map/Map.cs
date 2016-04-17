@@ -7,7 +7,7 @@ public class Map {
     public int YSize;
 	public int bgap = 6;
 	public int dgap = 2;
-	public int blength = 4;
+	public int blength = 3;
 	public int dlength = 2;
 
 	private int baseHeight = 2;
@@ -28,6 +28,15 @@ public class Map {
         XSize = X;
         YSize = Y;
 
+		// layer 1 platforms
+		int x0 = 0;
+		int x1 = 0;
+		int y0 = baseHeight + bufferZone;
+		int y1  = baseHeight + bufferZone;
+		int gap = Random.Range(bgap - dgap, bgap + dgap);
+		int  length = Random.Range(blength -  dlength, blength + dlength); 
+		int dy = 0;
+
 		// Height of the bedrock
         int nextUpdate = Random.Range(4, 8);
         for(int i = 0; i < X; i++){
@@ -43,21 +52,9 @@ public class Map {
                 if (j!= 0 && j <= currentHeight && i != 0 && i != X - 1)
                     filled[i][j] = true;
             }
-        }
 
-		// layer 1 platforms
-		int x0 = 0;
-		int x1 = 0;
-		int y0 = baseHeight + bufferZone;
-		int y1  = baseHeight + bufferZone;
-		int gap = Random.Range(bgap - dgap, bgap + dgap);
-		int  length = Random.Range(blength -  dlength, blength + dlength); 
-		int dy = 0;
-
-		for (int i = 1; i < X - 1; i++) 
-		{
 			// if j is in between the platform coordinates
-			if (i >= x1 && i <= x1 + length)
+			if (i >= x1 && i <= x1 + length && i != 0 && i < X - 1)
 			{
 				filled[i][y1] = true;
 
@@ -69,12 +66,12 @@ public class Map {
 					gap = Random.Range(bgap - dgap, bgap + dgap); 
 					length = Random.Range(blength -  dlength, blength + dlength);
 					x1 = x0 + length + gap;
-					dy = Random.Range (0, 2);
+					dy = Random.Range (1, 3);
 					y1 = Mathf.Min (Mathf.Max (currentHeight + bufferZone, Random.Range (y0 - dy, y0 + dy)), Y - 2);
 					Debug.Log (x1 + " " + y1 + "TEST");
 
 				}
 			}
-		} 
+        }
     }
 }
