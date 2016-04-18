@@ -5,6 +5,7 @@ public abstract class EntityBase : MonoBehaviour {
     public float speed;
     public float jumpHeight;
     public bool debug = false;
+    public int threat;
 
     public float[] damageLowerer;
 
@@ -68,7 +69,6 @@ public abstract class EntityBase : MonoBehaviour {
         {
             PlayerForm form = gameObject.GetComponent<PlayerForm>();
             if (form.currentForm == 1) {
-                body.velocity = lastVelocity;
             }
             else
             {
@@ -141,7 +141,7 @@ public abstract class EntityBase : MonoBehaviour {
                 return;
             }
             //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
-            float velocityPower = c.relativeVelocity.magnitude ;
+            float velocityPower = (other.lastVelocity - this.lastVelocity).magnitude;
             Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;

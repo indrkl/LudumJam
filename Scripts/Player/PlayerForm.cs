@@ -27,6 +27,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public ControllerPlayer cp;
     public ParticleSystem psys;
 	public SoundManager soundManager;
+    public int threat;
 
 	public AudioClip transformSound;
 
@@ -61,6 +62,9 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         transform.localScale = forms[currentForm].localScale;
 
         rb.mass = forms[currentForm].mass;
+        cp.damageLowerer = forms[currentForm].damageLowerer;
+
+        cp.threat = forms[currentForm].threat;
     }
     public int CompareTo(PlayerForm comparePart)
     {

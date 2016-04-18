@@ -9,6 +9,8 @@ public class ChargeBehaviour : AIBehaviour
     public override bool Condition()
     {
         ControllerPlayer pl = ControllerPlayer.instance;
+        if (pl.threat == 0)
+            return false;
         if (Vector3.Distance(pl.transform.position, ai.transform.position) < triggerDistance)
             return true;
         else return false;
