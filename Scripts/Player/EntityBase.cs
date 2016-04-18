@@ -33,6 +33,7 @@ public abstract class EntityBase : MonoBehaviour {
     public Rigidbody2D projectile;
 
     Vector2 lastVelocity;
+    float DashSpeed;
 
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
@@ -69,6 +70,21 @@ public abstract class EntityBase : MonoBehaviour {
         if (debug)
             Debug.Log("Is updating");
 
+        
+        if (direction == "RIGHT")
+        {
+            movement += DashSpeed;
+        } else
+        {
+            movement -= DashSpeed;
+        }
+        DashSpeed -= 0.1f;
+
+        if (DashSpeed < 0)
+        {
+            DashSpeed = 0;
+        }
+
         try
         {
             PlayerForm form = gameObject.GetComponent<PlayerForm>();
@@ -94,6 +110,8 @@ public abstract class EntityBase : MonoBehaviour {
         }
         if (debug)
             Debug.Log(feet.IsTouchingLayers());
+
+
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
@@ -131,7 +149,7 @@ public abstract class EntityBase : MonoBehaviour {
         }
 
         lastVelocity = body.velocity;
-
+        WallsSlide();
     }
 
     void OnCollisionEnter2D(Collision2D c)
@@ -238,6 +256,14 @@ public abstract class EntityBase : MonoBehaviour {
             
         }
     }
+
+    public void DashAttack(float speedModifier)
+    {
+        if (cd_remaining >= 0)
+            DashSpeed = speed * speedModifier;
+    }
+
+
     protected void WallsSlide()
     {
         //slide down on walls
@@ -264,7 +290,5 @@ public abstract class EntityBase : MonoBehaviour {
         {
             body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
         }
-        WallsSlide();
-
     }
 }
