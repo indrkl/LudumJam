@@ -12,9 +12,16 @@ public class ProjectileScript : MonoBehaviour {
         {
             print("kekle");
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position - new Vector3(-0.3f, 0, 0), new Vector2(1, 0));
-            hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(45f);
-            Instantiate(psys, transform.position, transform.rotation);
-            Destroy(gameObject);
+            try
+            {
+                hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(45f);
+                Instantiate(psys, transform.position, transform.rotation);
+                Destroy(gameObject);
+            } catch (System.Exception e)
+            {
+                Destroy(gameObject);
+            }
+            
             
 
         }

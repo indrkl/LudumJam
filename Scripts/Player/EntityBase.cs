@@ -38,6 +38,8 @@ public abstract class EntityBase : MonoBehaviour {
     //top, right, down, bott
     public void takeDamage(float damage, int dir = 1) {
         curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
+        anim.SetTrigger("TakeDamage");
+        print("Take Damage");
 		if (curLife <= 0)
             Die();
     }

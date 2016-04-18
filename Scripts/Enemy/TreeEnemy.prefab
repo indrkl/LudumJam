@@ -14,6 +14,7 @@ GameObject:
   - 61: {fileID: 6173224}
   - 95: {fileID: 9532830}
   - 58: {fileID: 5839004}
+  - 114: {fileID: 11423592}
   m_Layer: 8
   m_Name: TreeEnemy
   m_TagString: Untagged
@@ -95,6 +96,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11423592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85c6f0be2422f443bc329f5ee1430a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 0}
+  priority: 0
+  coolDown: 1
+  lastShotTime: 0
+  damage: 45
 --- !u!114 &11454158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +147,8 @@ MonoBehaviour:
   cd_remaining: 0
   projectile: {fileID: 129356, guid: f23bba6b9a900dc4780d87cac59ae44c, type: 2}
   lastJumpTime: 0
-  behaviours: []
+  behaviours:
+  - {fileID: 11423592}
 --- !u!212 &21292838
 SpriteRenderer:
   m_ObjectHideFlags: 1
