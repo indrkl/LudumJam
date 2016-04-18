@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: 665c8559817b73e4d8aaf8df9a0a0a39
-timeCreated: 1460971661
+timeCreated: 1460979291
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: deathtest sheet_0
+    21300002: deathtest sheet_1
+    21300004: deathtest sheet_2
+    21300006: deathtest sheet_3
+    21300008: deathtest sheet_4
+    21300010: deathtest sheet_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +36,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,18 +44,135 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: deathtest sheet_0
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 473
+        width: 250
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.882889, y: 34.49475}
+        - {x: -29.882889, y: 21.494751}
+        - {x: -29.882889, y: -26.505249}
+        - {x: -19.882889, y: -32.50525}
+        - {x: 30.117111, y: -32.50525}
+        - {x: 30.117111, y: 30.494751}
+        - {x: 20.117111, y: 34.49475}
+    - name: deathtest sheet_1
+      rect:
+        serializedVersion: 2
+        x: 2102
+        y: 477
+        width: 255
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.145782, y: 35.45031}
+        - {x: -18.854218, y: 35.45031}
+        - {x: -30.854218, y: 24.45031}
+        - {x: -30.854218, y: -16.54969}
+        - {x: -28.854218, y: -24.54969}
+        - {x: -14.854218, y: -32.54969}
+        - {x: -10.854218, y: -33.54969}
+        - {x: 14.145782, y: -33.54969}
+        - {x: 31.145782, y: -21.54969}
+        - {x: 31.145782, y: 12.45031}
+        - {x: 21.145782, y: 34.45031}
+    - name: deathtest sheet_2
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 469
+        width: 250
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 25.113342, y: 32.539192}
+        - {x: 19.113342, y: 35.539192}
+        - {x: -19.886658, y: 35.539192}
+        - {x: -29.886658, y: 20.539192}
+        - {x: -29.886658, y: -12.460808}
+        - {x: -21.886658, y: -35.460808}
+        - {x: 30.113342, y: -35.460808}
+        - {x: 30.113342, y: 11.539192}
+        - {x: 29.113342, y: 17.539192}
+    - name: deathtest sheet_3
+      rect:
+        serializedVersion: 2
+        x: 4910
+        y: 473
+        width: 251
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29.552368, y: -18.005249}
+        - {x: -17.552368, y: -35.00525}
+        - {x: 30.447632, y: -35.00525}
+        - {x: 31.447632, y: -34.00525}
+        - {x: 31.447632, y: 31.994751}
+        - {x: 30.447632, y: 36.99475}
+        - {x: -20.552368, y: 36.99475}
+        - {x: -29.552368, y: 29.994751}
+    - name: deathtest sheet_4
+      rect:
+        serializedVersion: 2
+        x: 6313
+        y: 477
+        width: 255
+        height: 297
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.89038, y: 36.95031}
+        - {x: -30.89038, y: 18.95031}
+        - {x: -30.89038, y: -24.04969}
+        - {x: -12.890381, y: -35.04969}
+        - {x: 26.10962, y: -35.04969}
+        - {x: 31.10962, y: -24.04969}
+        - {x: 31.10962, y: 21.95031}
+        - {x: 16.10962, y: 36.95031}
+    - name: deathtest sheet_5
+      rect:
+        serializedVersion: 2
+        x: 7723
+        y: 469
+        width: 255
+        height: 296
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.056152, y: 35.539192}
+        - {x: -30.056152, y: 31.539192}
+        - {x: -30.056152, y: -20.460808}
+        - {x: -10.056152, y: -35.460808}
+        - {x: 19.943848, y: -35.460808}
+        - {x: 31.943848, y: -27.460808}
+        - {x: 31.943848, y: 18.539192}
+        - {x: 27.943848, y: 35.539192}
     outline: []
   spritePackingTag: 
   userData: 

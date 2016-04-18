@@ -139,12 +139,13 @@ public abstract class EntityBase : MonoBehaviour {
         if (movement > 0)
         {
             direction = "RIGHT";
-            GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         }
         else if (movement < 0)
         {
             direction = "LEFT";
-            GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+
         }
 
         //scale cooldown down
