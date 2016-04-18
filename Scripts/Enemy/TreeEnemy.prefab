@@ -109,6 +109,7 @@ MonoBehaviour:
   speed: 0
   jumpHeight: 0
   debug: 0
+  threat: 0
   damageLowerer:
   - 1
   - 1
@@ -123,10 +124,11 @@ MonoBehaviour:
   anim: {fileID: 9532830}
   body: {fileID: 5036988}
   box: {fileID: 6173224}
+  feet: {fileID: 5839004}
   alive: 1
   cooldown: 0
   cd_remaining: 0
-  feet: {fileID: 5839004}
+  projectile: {fileID: 129356, guid: f23bba6b9a900dc4780d87cac59ae44c, type: 2}
   lastJumpTime: 0
   behaviours: []
 --- !u!212 &21292838

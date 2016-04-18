@@ -56,13 +56,12 @@ MonoBehaviour:
   threat: 2
   transformSound: {fileID: 0}
   sunShafts: {fileID: 0}
-  blinkSpeed: 180
   damageLowerer:
   - 0.7
   - 0.7
   - 0.7
   - 0.7
-  attackDmg: 0
+  attackDmg: 45
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

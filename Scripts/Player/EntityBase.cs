@@ -36,7 +36,7 @@ public abstract class EntityBase : MonoBehaviour {
     float DashSpeed;
 
     //top, right, down, bott
-    public void takeDamage(float damage, int dir) {
+    public void takeDamage(float damage, int dir = 1) {
         curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
 		if (curLife <= 0)
             Die();
