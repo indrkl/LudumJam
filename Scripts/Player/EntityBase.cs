@@ -69,7 +69,8 @@ public abstract class EntityBase : MonoBehaviour {
             return;
         if (debug)
             Debug.Log("Is updating");
-
+        if (transform.position.y < -100)
+            Die();
         
         if (direction == "RIGHT")
         {
@@ -165,7 +166,6 @@ public abstract class EntityBase : MonoBehaviour {
             }
             //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
             float velocityPower = (other.lastVelocity - this.lastVelocity).magnitude;
-            Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;
             if (Mathf.Abs(collisionDir.y) > Mathf.Abs(collisionDir.x))
