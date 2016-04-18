@@ -16,8 +16,15 @@ public class FleeBehaviour : AIBehaviour
         if (pl.threat < threatStart)
             return false;
         if (Vector3.Distance(pl.transform.position, ai.transform.position) < triggerDistance)
+        {
             return true;
-        else return false;
+        }
+        else
+        {
+            lastChange = Time.time;
+        }
+           
+        return false;
     }
 
     public override void OnUpdate()
