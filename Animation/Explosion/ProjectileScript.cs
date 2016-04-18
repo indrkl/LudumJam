@@ -20,18 +20,4 @@ public class ProjectileScript : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-	void OnCollisionEnter2D(Collision2D col)
-    {
-        print(col.gameObject);
-        if (col.transform.gameObject.layer == 8)
-        {
-            col.transform.gameObject.GetComponent<EntityBase>().takeDamage(50f, 1);
-            Destroy (gameObject);
-
-        } else if (col.transform.gameObject.layer == 9)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

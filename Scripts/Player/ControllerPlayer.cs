@@ -44,6 +44,7 @@ public class ControllerPlayer : EntityBase {
             if (form.currentForm == 0)
             {
                 MeleeAttack(form.attackDmg);
+                RangedAttack(25f);
             }
             
         }
