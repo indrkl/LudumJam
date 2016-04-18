@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class GameMaster : MonoBehaviour {
+    public GameObject DeathObjectPrefab;
+    
     public MapGenerator generator;
     public MapDrawer mapDrawer;
 
