@@ -46,7 +46,7 @@ MonoBehaviour:
   colliderSize: {x: 0.56, y: 0.43}
   colliderOffset: {x: 0, y: 0.23}
   localScale: {x: 2, y: 2, z: 1}
-  mass: 4
+  mass: 10
   cooldown: 2
   rb: {fileID: 0}
   bc: {fileID: 0}
