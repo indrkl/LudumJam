@@ -23,6 +23,8 @@ public abstract class EntityBase : MonoBehaviour {
 
     public Rigidbody2D body;
     public BoxCollider2D box;
+    public Collider2D feet;
+
 
     public bool alive = true;
 
@@ -50,7 +52,6 @@ public abstract class EntityBase : MonoBehaviour {
         GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
-    public CircleCollider2D feet;
 
     void Start()
     {
@@ -63,6 +64,8 @@ public abstract class EntityBase : MonoBehaviour {
 
     public void OnUpdate()
     {
+        if (!alive)
+            return;
         if (debug)
             Debug.Log("Is updating");
 
@@ -89,7 +92,8 @@ public abstract class EntityBase : MonoBehaviour {
         {
             anim.SetFloat("Speed", 0);
         }
-
+        if (debug)
+            Debug.Log(feet.IsTouchingLayers());
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
@@ -234,6 +238,33 @@ public abstract class EntityBase : MonoBehaviour {
             
         }
     }
+    protected void WallsSlide()
+    {
+        //slide down on walls
+        Vector3 horizontalMove = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * speed;
+        horizontalMove.y = 0;
 
-    
+        float distance = horizontalMove.magnitude * Time.deltaTime;
+
+        float width = box.bounds.size[0];
+        float height = box.bounds.size[1];
+
+        Vector3 point1 = transform.position + new Vector3(0, 0.1f, 0);
+        Vector3 point2 = transform.position + new Vector3(0, 0.1f, 0) + horizontalMove.normalized * (distance + 0.5f * width);
+
+        Vector3 point3 = transform.position + new Vector3(0, height, 0);
+        Vector3 point4 = transform.position + new Vector3(0, height, 0) + horizontalMove.normalized * (distance + 0.5f * width);
+
+        //print(Physics2D.Linecast(point1, point2, 1 << LayerMask.NameToLayer("Ground")));
+        if (Physics2D.Linecast(point1, point2, 1 << LayerMask.NameToLayer("Ground")) || Physics2D.Linecast(point3, point4, 1 << LayerMask.NameToLayer("Ground")))
+        {
+            body.velocity = new Vector2(0, body.velocity.y);
+        }
+        else
+        {
+            body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
+        }
+        WallsSlide();
+
+    }
 }

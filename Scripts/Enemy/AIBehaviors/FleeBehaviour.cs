@@ -2,24 +2,22 @@
 using System.Collections;
 using System;
 
-public class ChargeBehaviour : AIBehaviour
+public class FleeBehaviour : AIBehaviour
 {
+    public int threatStart = 1;
     public bool right;
     public float triggerDistance;
     public float lastChange = -5;
-    public int threatStart = 1;
-    public int threatEnd = 5;
-
-
     public override bool Condition()
     {
         ControllerPlayer pl = ControllerPlayer.instance;
-        if (pl.threat < threatStart || pl.threat > threatEnd)
+        if (pl.threat >= threatStart)
             return false;
         if (Vector3.Distance(pl.transform.position, ai.transform.position) < triggerDistance)
             return true;
         else return false;
     }
+
     public override void OnUpdate()
     {
         Vector3 lookingAt = Vector2.left;
@@ -28,7 +26,7 @@ public class ChargeBehaviour : AIBehaviour
 
 
         ControllerPlayer pl = ControllerPlayer.instance;
-        Vector3 dir = ai.transform.position - pl.transform.position;
+        Vector3 dir = pl.transform.position - ai.transform.position;
         if (dir.x < 0 && !right)
         {
             right = true;
