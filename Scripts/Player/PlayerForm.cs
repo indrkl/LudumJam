@@ -31,6 +31,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
 	public AudioClip transformSound;
 
+    public List<int> AvailableForms;
 
 	public UnityStandardAssets.ImageEffects.SunShafts sunShafts;
 	private float blinkSpeed = 720f;
@@ -44,6 +45,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
     // Use this for initialization
     void Start () {
+        AvailableForms.Add(1);
         forms = new List<PlayerForm>(Resources.LoadAll<PlayerForm>("Forms"));
         forms.Sort();
     }
@@ -65,29 +67,32 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 	}
 
     public void SwitchForm (int newForm) {
-
-        if (currentForm != newForm)
+        if (AvailableForms.Contains(newForm))
         {
-            psys.Play();
-			soundManager.PlaySingle (transformSound);
-			transforming = true;
-			blinkIntensity = 0.1f;
+            if (currentForm != newForm)
+            {
+                psys.Play();
+                soundManager.PlaySingle(transformSound);
+                transforming = true;
+                blinkIntensity = 0.1f;
 
+            }
+            currentForm = newForm;
+            Debug.Log(forms[currentForm].formNumber + " " + newForm);
+
+            cp.speed = forms[currentForm].speed;
+            cp.jumpHeight = forms[currentForm].jumpHeight;
+            bc.size = forms[currentForm].colliderSize;
+            bc.offset = forms[currentForm].colliderOffset;
+            transform.localScale = forms[currentForm].localScale;
+
+            rb.mass = forms[currentForm].mass;
+            cp.damageLowerer = forms[currentForm].damageLowerer;
+
+            cp.threat = forms[currentForm].threat;
         }
-        currentForm = newForm;
-        Debug.Log(forms[currentForm].formNumber + " " + newForm);
-
-        cp.speed = forms[currentForm].speed;
-        cp.jumpHeight = forms[currentForm].jumpHeight;
-        bc.size = forms[currentForm].colliderSize;
-        bc.offset = forms[currentForm].colliderOffset;
-        transform.localScale = forms[currentForm].localScale;
-
-        rb.mass = forms[currentForm].mass;
-        cp.damageLowerer = forms[currentForm].damageLowerer;
-
-        cp.threat = forms[currentForm].threat;
     }
+
     public int CompareTo(PlayerForm comparePart)
     {
         // A null value means that this object is greater.

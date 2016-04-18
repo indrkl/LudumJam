@@ -8,12 +8,23 @@ public class DeadBody : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D obj) {
 		if (obj.name == "Player")
 			isCollectable = true;
-			//Debug.Log ("I can feel the vibes of the player");
+
+        if (obj.GetComponent<ControllerPlayer>())
+        {
+            PlayerForm form = obj.GetComponent<ControllerPlayer>().form;
+            form.AvailableForms.Add(formID);
+            
+            if (form.AvailableForms.Count > 3)
+            {
+                form.AvailableForms.RemoveAt(0);
+            }
+        }
+
 	}
 
 	void OnTriggerExit2D(Collider2D obj){
 		if (obj.name == "Player")
 			isCollectable = false;
-			//Debug.Log ("Player vibes left me"); 
+
 	}
 }
