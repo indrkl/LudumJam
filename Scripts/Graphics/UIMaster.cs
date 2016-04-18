@@ -11,6 +11,7 @@ public class UIMaster : MonoBehaviour {
     public Image[] slots;
 
     public GameObject DeathPanel;
+    public GameObject WinPanel;
 
     void Start()
     {
@@ -19,11 +20,17 @@ public class UIMaster : MonoBehaviour {
 
     void Update()
     {
+        if (player.won)
+        {
+            WinPanel.SetActive(true);
+            return;
+        }
         if (!player)
         {
             DeathPanel.SetActive(true);
             return;
         }
+
 
         hpBar.fillAmount = player.curLife / player.maxLife;
         int i = 0;

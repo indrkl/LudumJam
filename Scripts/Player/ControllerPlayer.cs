@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ControllerPlayer : EntityBase {
     public PlayerForm form;
+    public bool won = false;
 
     public static ControllerPlayer instance;
 
@@ -65,8 +66,6 @@ public class ControllerPlayer : EntityBase {
 
         //call update function that is shared between all entities
         base.OnUpdate();
-
-
     }
 
 }

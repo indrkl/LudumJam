@@ -6,11 +6,14 @@ public class MapGenerator : MonoBehaviour {
     public int Ysize;
     public float enemyChance = 0.2f;
 
+    public GameObject endPrefab;
+
     public Map generateMap()
     {
         Map r = new Map();
         r.initiate(Xsize, Ysize);
         fillWithEnemies(r);
+        Instantiate(endPrefab, new Vector3(Xsize - 2, 0, 0), Quaternion.Euler(0, 0, 0));
         return r;
     }
 
