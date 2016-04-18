@@ -13,6 +13,8 @@ public class ChargeBehaviour : AIBehaviour
 
     public override bool Condition()
     {
+        if (!ControllerPlayer.instance)
+            return false;
         ControllerPlayer pl = ControllerPlayer.instance;
         if (pl.threat < threatStart || pl.threat > threatEnd)
             return false;

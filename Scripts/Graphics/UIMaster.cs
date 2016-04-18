@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIMaster : MonoBehaviour {
     public Image hpBar;
@@ -9,6 +10,8 @@ public class UIMaster : MonoBehaviour {
 
     public Image[] slots;
 
+    public GameObject DeathPanel;
+
     void Start()
     {
         player = ControllerPlayer.instance;
@@ -16,6 +19,12 @@ public class UIMaster : MonoBehaviour {
 
     void Update()
     {
+        if (!player)
+        {
+            DeathPanel.SetActive(true);
+            return;
+        }
+
         hpBar.fillAmount = player.curLife / player.maxLife;
         int i = 0;
         foreach(Image im in slots)
@@ -31,5 +40,10 @@ public class UIMaster : MonoBehaviour {
             i++;
         }
 
+    }
+    public string sceneName;
+    public void resetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

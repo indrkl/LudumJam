@@ -10,6 +10,8 @@ public class FleeBehaviour : AIBehaviour
     public float lastChange = -5;
     public override bool Condition()
     {
+        if (!ControllerPlayer.instance)
+            return false;
         ControllerPlayer pl = ControllerPlayer.instance;
         if (pl.threat < threatStart)
             return false;

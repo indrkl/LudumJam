@@ -10,6 +10,8 @@ public class ShootingScript : AIBehaviour {
 
     public override bool Condition()
     {
+        if (!ControllerPlayer.instance)
+            return false;   
         if (Time.time < lastShotTime + coolDown)
             return false;
         ControllerPlayer pl = ControllerPlayer.instance;
