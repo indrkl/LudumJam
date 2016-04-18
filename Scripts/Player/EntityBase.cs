@@ -253,12 +253,13 @@ public abstract class EntityBase : MonoBehaviour {
             if (direction == "RIGHT")
             {
                 Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+                Projectile.GetComponent<ProjectileScript>().damage = damage;
 
                 Projectile.velocity = new Vector2(10, 0);
             } else
             {
                 Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(-1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 326))) as GameObject).GetComponent<Rigidbody2D>();
-
+                Projectile.GetComponent<ProjectileScript>().damage = damage;
                 Projectile.velocity = new Vector2(-10, 0);
                 //Projectile.GetComponent<SpriteRenderer>().flipX = true;
             }
