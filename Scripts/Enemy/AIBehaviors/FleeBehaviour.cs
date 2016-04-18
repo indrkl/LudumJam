@@ -11,7 +11,7 @@ public class FleeBehaviour : AIBehaviour
     public override bool Condition()
     {
         ControllerPlayer pl = ControllerPlayer.instance;
-        if (pl.threat >= threatStart)
+        if (pl.threat < threatStart)
             return false;
         if (Vector3.Distance(pl.transform.position, ai.transform.position) < triggerDistance)
             return true;

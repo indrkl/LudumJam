@@ -39,7 +39,6 @@ public abstract class EntityBase : MonoBehaviour {
     public void takeDamage(float damage, int dir = 1) {
         curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
         anim.SetTrigger("TakeDamage");
-        print("Take Damage");
 		if (curLife <= 0)
             Die();
     }
@@ -89,6 +88,7 @@ public abstract class EntityBase : MonoBehaviour {
         if (DashSpeed < 0)
         {
             DashSpeed = 0;
+            trample = false;
         }
 
         try
@@ -247,9 +247,6 @@ public abstract class EntityBase : MonoBehaviour {
     {
         if (cd_remaining >= 0)
         {
-            Debug.Log(projectile.name);
-
-
             if (direction == "RIGHT")
             {
                 Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
@@ -265,11 +262,13 @@ public abstract class EntityBase : MonoBehaviour {
             }
         }
     }
+    public bool trample;
 
     public void DashAttack(float speedModifier)
     {
         if (cd_remaining >= 0)
             DashSpeed = speed * speedModifier;
+        trample = true;
     }
 
 
