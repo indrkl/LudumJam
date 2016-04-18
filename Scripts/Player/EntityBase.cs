@@ -54,6 +54,9 @@ public abstract class EntityBase : MonoBehaviour {
         }
         GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        Destroy(gameObject);
+        GameObject obj = Instantiate(GameMaster.instance.DeathObjectPrefab, this.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        obj.GetComponent<DeadBody>().formID = startingForm;
     }
 
     void Start()
