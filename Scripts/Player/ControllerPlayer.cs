@@ -41,7 +41,11 @@ public class ControllerPlayer : EntityBase {
         if (Input.GetKeyDown(KeyCode.Q) && cd_remaining == 0)
         {
             anim.SetTrigger("Attack");
-            MeleeAttack();
+            if (form.currentForm == 0)
+            {
+                MeleeAttack(form.attackDmg);
+            }
+            
         }
 
         //set animation controller to current form

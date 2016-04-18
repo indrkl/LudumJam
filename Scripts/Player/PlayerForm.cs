@@ -39,6 +39,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
     public static List<PlayerForm> forms;
     public float[] damageLowerer;
+    public float attackDmg;
 
     // Use this for initialization
     void Start () {

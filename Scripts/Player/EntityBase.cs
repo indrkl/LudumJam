@@ -183,9 +183,9 @@ public abstract class EntityBase : MonoBehaviour {
         }
     }
 
-    public void MeleeAttack()
+    public void MeleeAttack(float damage)
     {
-        float AttackRange = 2f;
+        float AttackRange = 1.5f;
 
         if (cd_remaining >= 0)
         {
@@ -207,7 +207,7 @@ public abstract class EntityBase : MonoBehaviour {
             if (hit)
             {
                 print(hit.transform.gameObject);
-                hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(25f, 1);
+                hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(damage, 1);
             }
             
         }
