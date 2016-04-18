@@ -33,8 +33,9 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
 
 	public UnityStandardAssets.ImageEffects.SunShafts sunShafts;
-	public float blinkSpeed = 180f;
+	private float blinkSpeed = 720f;
 	private bool transforming;
+	private float blinkIntensity;
 
 
     public static List<PlayerForm> forms;
@@ -49,11 +50,18 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 	
 	// Update is called once per frame
 	void Update () {
-		float intensity;
 		if (transforming) {
-			sunShafts.sunShaftIntensity = Mathf.Sin(Mathf.Deg2Rad * blinkSpeed);
+			blinkIntensity += Time.deltaTime * blinkSpeed * Mathf.Deg2Rad;
+			sunShafts.maxRadius = 0.2f - 0.2f*Mathf.Cos (blinkIntensity);
+			Debug.Log(sunShafts.maxRadius + " sunshafts");
+
+			if (blinkIntensity > 2f * Mathf.PI) {
+				transforming = false;
+				blinkIntensity = 0f;
+				sunShafts.maxRadius = 0;
+			}
+
 		}
-	
 	}
 
     public void SwitchForm (int newForm) {
@@ -63,6 +71,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
             psys.Play();
 			soundManager.PlaySingle (transformSound);
 			transforming = true;
+			blinkIntensity = 0.1f;
 
         }
         currentForm = newForm;
