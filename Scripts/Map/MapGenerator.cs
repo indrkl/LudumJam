@@ -10,7 +10,7 @@ public class MapGenerator : MonoBehaviour {
     {
         Map r = new Map();
         r.initiate(Xsize, Ysize);
-        //fillWithEnemies(r);
+        fillWithEnemies(r);
         return r;
     }
 
