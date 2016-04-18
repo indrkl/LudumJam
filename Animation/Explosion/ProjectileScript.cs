@@ -10,26 +10,34 @@ public class ProjectileScript : MonoBehaviour {
     {
         if (circle.IsTouchingLayers())
         {
-            print("kekle");
             RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position - new Vector3(-0.3f, 0, 0), new Vector2(1, 0));
-            try
+
+            print(hit.transform.gameObject);
+
+            if (hit.transform.gameObject.GetComponent<AIBase>())
             {
-                hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(45f);
+                hit.transform.gameObject.GetComponent<AIBase>().takeDamage(45f);
                 Instantiate(psys, transform.position, transform.rotation);
-                Destroy(gameObject);
-            } catch (System.Exception e)
-            {
+
                 Destroy(gameObject);
             }
+            else if (hit.transform.gameObject.GetComponent<ControllerPlayer>())
+            {
+                hit.transform.gameObject.GetComponent<ControllerPlayer>().takeDamage(45f);
+                Instantiate(psys, transform.position, transform.rotation);
+
+                Destroy(gameObject);
+            } else
+            {
+                Instantiate(psys, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+                
+         
+                
             
             
 
-        }
-        else if (circle.IsTouchingLayers(LayerMask.NameToLayer("Ground")))
-        {
-            psys.Play();
-            Destroy(gameObject);
-            
         }
     }
 }
