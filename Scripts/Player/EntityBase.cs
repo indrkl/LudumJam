@@ -30,7 +30,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     public float cooldown; //ability cooldown for enemies, players get their cooldown from playerForm
     public float cd_remaining = 0;  //cooldown remaining til you can attack again
-    public Rigidbody2D projectile;
+    public GameObject projectile;
 
     Vector2 lastVelocity;
     float DashSpeed;
@@ -241,19 +241,21 @@ public abstract class EntityBase : MonoBehaviour {
     {
         if (cd_remaining >= 0)
         {
-            Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(0.6443f, 0.5027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+            Debug.Log(projectile.name);
 
-            print(Projectile.gameObject);
 
             if (direction == "RIGHT")
             {
+                Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+
                 Projectile.velocity = new Vector2(10, 0);
             } else
             {
+                Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(-1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+
                 Projectile.velocity = new Vector2(-10, 0);
                 GetComponent<SpriteRenderer>().flipX = true;
             }
-            
         }
     }
 
