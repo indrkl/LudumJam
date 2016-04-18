@@ -45,7 +45,15 @@ public class ControllerPlayer : EntityBase {
             {
                 MeleeAttack(form.attackDmg);
             }
-            
+            else if (form.currentForm == 3)
+            {
+                RangedAttack(25f);
+            }
+            else if (form.currentForm == 2)
+            {
+                DashAttack(1.2f);
+            }
+
         }
 
         //set animation controller to current form

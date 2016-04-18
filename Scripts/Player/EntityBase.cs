@@ -30,8 +30,10 @@ public abstract class EntityBase : MonoBehaviour {
 
     public float cooldown; //ability cooldown for enemies, players get their cooldown from playerForm
     public float cd_remaining = 0;  //cooldown remaining til you can attack again
+    public Rigidbody2D projectile;
 
     Vector2 lastVelocity;
+    float DashSpeed;
 
     //top, right, down, bott
     public void takeDamage(float damage, int dir) {
@@ -68,6 +70,21 @@ public abstract class EntityBase : MonoBehaviour {
         if (debug)
             Debug.Log("Is updating");
 
+        
+        if (direction == "RIGHT")
+        {
+            movement += DashSpeed;
+        } else
+        {
+            movement -= DashSpeed;
+        }
+        DashSpeed -= 0.1f;
+
+        if (DashSpeed < 0)
+        {
+            DashSpeed = 0;
+        }
+
         try
         {
             PlayerForm form = gameObject.GetComponent<PlayerForm>();
@@ -93,6 +110,8 @@ public abstract class EntityBase : MonoBehaviour {
         }
         if (debug)
             Debug.Log(feet.IsTouchingLayers());
+
+
         //test if jump is possible
         if (Mathf.Abs(jump) > 0.1)
         {
@@ -130,7 +149,7 @@ public abstract class EntityBase : MonoBehaviour {
         }
 
         lastVelocity = body.velocity;
-
+        WallsSlide();
     }
 
     void OnCollisionEnter2D(Collision2D c)
@@ -202,7 +221,8 @@ public abstract class EntityBase : MonoBehaviour {
             if (direction == "RIGHT")
             {
                 point2 = new Vector2(transform.position.x + AttackRange, transform.position.y + 0.3f);
-            } else
+            }
+            else
             {
                 point2 = new Vector2(transform.position.x - AttackRange, transform.position.y + 0.3f);
             }
@@ -213,12 +233,36 @@ public abstract class EntityBase : MonoBehaviour {
                 print(hit.transform.gameObject);
                 hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(damage, 1);
             }
+
+        }
+    }
+
+    public void RangedAttack(float damage)
+    {
+        if (cd_remaining >= 0)
+        {
+            Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(0.6443f, 0.5027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+
+            print(Projectile.gameObject);
+
+            if (direction == "RIGHT")
+            {
+                Projectile.velocity = new Vector2(10, 0);
+            } else
+            {
+                Projectile.velocity = new Vector2(-10, 0);
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
             
         }
-       
-
-
     }
+
+    public void DashAttack(float speedModifier)
+    {
+        if (cd_remaining >= 0)
+            DashSpeed = speed * speedModifier;
+    }
+
 
     protected void WallsSlide()
     {
@@ -246,7 +290,5 @@ public abstract class EntityBase : MonoBehaviour {
         {
             body.velocity = new Vector2(movement, body.velocity.y + 0.1f);
         }
-        WallsSlide();
-
     }
 }
