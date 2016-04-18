@@ -11,13 +11,16 @@ public class DeadBody : MonoBehaviour {
 
         if (obj.GetComponent<ControllerPlayer>())
         {
-            PlayerForm form = obj.GetComponent<ControllerPlayer>().form;
-            form.AvailableForms.Add(formID);
-            
-            if (form.AvailableForms.Count > 3)
+            PlayerForm form = obj.GetComponent<ControllerPlayer>().form;            
+            if (form.AvailableForms.Count == 3)
             {
-                form.AvailableForms.RemoveAt(0);
+                form.AvailableForms[0] = formID;
+            } else
+            {
+                form.AvailableForms.Add(formID);
             }
+
+            Destroy(gameObject);
         }
 
 	}
