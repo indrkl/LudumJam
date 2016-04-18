@@ -19,9 +19,9 @@ public class CameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float xPos = Screen.width;
-        float yPos = Screen.height - 100;
+        float yPos = Screen.height - 200;
              
-        cam.pixelRect = new Rect(Screen.width - xPos, Screen.height - yPos, Screen.width, Screen.height - 100);
+        cam.pixelRect = new Rect(Screen.width - xPos, Screen.height - yPos, Screen.width, Screen.height - 200);
         if (player.trample)
         {
             yOffSet = Mathf.Sin(Time.time*20) / 3.0f * Mathf.Pow(Mathf.Abs(player.movement) / Mathf.Max(0.1f,player.speed), 3);
