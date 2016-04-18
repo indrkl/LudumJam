@@ -14,6 +14,7 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
     public int formNumber;
     public float speed;
     public float jumpHeight;
+    public Sprite icon;
 
     public Vector2 colliderSize;
     public Vector2 colliderOffset;
