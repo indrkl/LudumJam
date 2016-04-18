@@ -23,19 +23,15 @@ public class ControllerPlayer : EntityBase {
         //switch form
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            form.SwitchForm(1);
+            form.SwitchForm(form.AvailableForms[0]);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            form.SwitchForm(0);
+            form.SwitchForm(form.AvailableForms[1]);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            form.SwitchForm(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            form.SwitchForm(3);
+            form.SwitchForm(form.AvailableForms[2]);
         }
 
         //attack
