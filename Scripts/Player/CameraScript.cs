@@ -27,6 +27,9 @@ public class CameraScript : MonoBehaviour {
             yOffSet = Mathf.Sin(Time.time*20) / 3.0f * Mathf.Pow(Mathf.Abs(player.movement) / Mathf.Max(0.1f,player.speed*2), 3);
         }
         else yOffSet = yOffSet * 0.9f;
+		if (!player) {
+			return;
+		}
         this.transform.position = new Vector3(player.transform.position.x, Mathf.Max(y, player.transform.position.y) + yOffSet, z);
         this.transform.rotation = Quaternion.EulerAngles(yOffSet/20.0f, 4*yOffSet/23.0f, yOffSet/23.0f);
 
