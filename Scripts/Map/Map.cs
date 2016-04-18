@@ -45,7 +45,7 @@ public class Map {
             if (i > nextUpdate)
             {
 				currentHeight = Mathf.Max(baseHeight, Mathf.Min(5, currentHeight + Random.Range(-1, 2)));
-                nextUpdate = i + Random.Range(1, 10);
+                nextUpdate = i + Random.Range(1, 7);
             }
             filled[i] = new bool[Y];
             aestheticFilled[i] = new bool[Y];
