@@ -145,7 +145,7 @@ MonoBehaviour:
   alive: 1
   cooldown: 0
   cd_remaining: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 129356, guid: f23bba6b9a900dc4780d87cac59ae44c, type: 2}
   lastJumpTime: 0
   behaviours:
   - {fileID: 11473526}

@@ -36,7 +36,7 @@ public abstract class EntityBase : MonoBehaviour {
     float DashSpeed;
 
     //top, right, down, bott
-    public void takeDamage(float damage, int dir) {
+    public void takeDamage(float damage, int dir = 1) {
         curLife = Mathf.Max(curLife - damage * damageLowerer[dir]);
 		if (curLife <= 0)
             Die();
@@ -69,7 +69,8 @@ public abstract class EntityBase : MonoBehaviour {
             return;
         if (debug)
             Debug.Log("Is updating");
-
+        if (transform.position.y < -100)
+            Die();
         
         if (direction == "RIGHT")
         {
@@ -165,7 +166,6 @@ public abstract class EntityBase : MonoBehaviour {
             }
             //float velocityPower = (other.GetComponent<Rigidbody2D>().velocity - this.GetComponent<Rigidbody2D>().velocity).magnitude * other.GetComponent<Rigidbody2D>().mass;
             float velocityPower = (other.lastVelocity - this.lastVelocity).magnitude;
-            Debug.Log(velocityPower + " Power level");
 
             Vector3 collisionDir = other.transform.position - this.transform.position;
             if (Mathf.Abs(collisionDir.y) > Mathf.Abs(collisionDir.x))
@@ -251,10 +251,10 @@ public abstract class EntityBase : MonoBehaviour {
                 Projectile.velocity = new Vector2(10, 0);
             } else
             {
-                Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(-1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+                Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(-1.6443f, 1.3027f, 0), Quaternion.Euler(new Vector3(0, 0, 326))) as GameObject).GetComponent<Rigidbody2D>();
 
                 Projectile.velocity = new Vector2(-10, 0);
-                GetComponent<SpriteRenderer>().flipX = true;
+                //Projectile.GetComponent<SpriteRenderer>().flipX = true;
             }
         }
     }

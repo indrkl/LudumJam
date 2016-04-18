@@ -10,7 +10,7 @@ public class MapGenerator : MonoBehaviour {
     {
         Map r = new Map();
         r.initiate(Xsize, Ysize);
-        //fillWithEnemies(r);
+        fillWithEnemies(r);
         return r;
     }
 
@@ -23,12 +23,14 @@ public class MapGenerator : MonoBehaviour {
             {
                 if (map.filled[i][j - 1] && !map.filled[i][j])
                     chain++;
-                if (chain > 5)
+                else chain = 0;
+                if (chain > 3)
                 {
                     if(Random.value < enemyChance)
                     {
                         InstantiateRandomEnemy(i - 2, j);
                     }
+                    chain = 0;
 
                 }
                     

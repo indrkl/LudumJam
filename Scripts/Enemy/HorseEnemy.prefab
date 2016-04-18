@@ -126,10 +126,11 @@ MonoBehaviour:
   anim: {fileID: 9595646}
   body: {fileID: 5099326}
   box: {fileID: 6161938}
+  feet: {fileID: 5895290}
   alive: 1
   cooldown: 0
   cd_remaining: 0
-  feet: {fileID: 5895290}
+  projectile: {fileID: 129356, guid: f23bba6b9a900dc4780d87cac59ae44c, type: 2}
   lastJumpTime: 0
   behaviours:
   - {fileID: 11483446}
@@ -150,6 +151,8 @@ MonoBehaviour:
   right: 0
   triggerDistance: 10
   lastChange: -5
+  threatStart: 1
+  threatEnd: 5
 --- !u!114 &11483446
 MonoBehaviour:
   m_ObjectHideFlags: 1

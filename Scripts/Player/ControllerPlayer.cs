@@ -16,6 +16,7 @@ public class ControllerPlayer : EntityBase {
     {
         form = gameObject.GetComponent<PlayerForm>();
         cooldown = form.cooldown;
+        form.SwitchForm(1);
     }
 
     void LateUpdate () {        

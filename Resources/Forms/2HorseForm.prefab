@@ -47,7 +47,7 @@ MonoBehaviour:
   colliderOffset: {x: 0, y: 0.282}
   localScale: {x: 3, y: 3, z: 1}
   mass: 25
-  cooldown: 0
+  cooldown: 3
   rb: {fileID: 0}
   bc: {fileID: 0}
   cp: {fileID: 0}
@@ -56,7 +56,6 @@ MonoBehaviour:
   threat: 2
   transformSound: {fileID: 0}
   sunShafts: {fileID: 0}
-  blinkSpeed: 180
   damageLowerer:
   - 0.6
   - 0.2

@@ -41,6 +41,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 157758, guid: a4e0c3dee10074545a7a363885fa81e6, type: 2}
+  - {fileID: 174714, guid: 846ebbbc7a89fb247afaae2f724204ba, type: 2}
+  - {fileID: 182318, guid: 9db93d0c12826264bb7ed99267cdfade, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

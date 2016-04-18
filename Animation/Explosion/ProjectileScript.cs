@@ -4,20 +4,25 @@ using System.Collections;
 public class ProjectileScript : MonoBehaviour {
     public Rigidbody2D body;
     public CircleCollider2D circle;
-
+    public ParticleSystem psys;
 
     void Update()
     {
-        if (circle.IsTouchingLayers(8))
+        if (circle.IsTouchingLayers())
         {
-            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position, body.velocity.normalized);
-            gameObject.GetComponent<EntityBase>().takeDamage(45f, 1);
+            print("kekle");
+            RaycastHit2D hit = Physics2D.Raycast(gameObject.transform.position - new Vector3(-0.3f, 0, 0), new Vector2(1, 0));
+            hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(45f);
+            Instantiate(psys, transform.position, transform.rotation);
             Destroy(gameObject);
+            
 
         }
-        else if (circle.IsTouchingLayers(9))
+        else if (circle.IsTouchingLayers(LayerMask.NameToLayer("Ground")))
         {
+            psys.Play();
             Destroy(gameObject);
+            
         }
     }
 }
