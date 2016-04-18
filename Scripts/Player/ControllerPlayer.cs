@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ControllerPlayer : EntityBase {
     public PlayerForm form;
-    public bool trample;
 
     public static ControllerPlayer instance;
 

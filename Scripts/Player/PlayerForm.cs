@@ -55,7 +55,6 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 		if (transforming) {
 			blinkIntensity += Time.deltaTime * blinkSpeed * Mathf.Deg2Rad;
 			sunShafts.maxRadius = 0.2f - 0.2f*Mathf.Cos (blinkIntensity);
-			Debug.Log(sunShafts.maxRadius + " sunshafts");
 
 			if (blinkIntensity > 2f * Mathf.PI) {
 				transforming = false;

@@ -24,7 +24,7 @@ public class CameraScript : MonoBehaviour {
         cam.pixelRect = new Rect(Screen.width - xPos, Screen.height - yPos, Screen.width, Screen.height - 200);
         if (player.trample)
         {
-            yOffSet = Mathf.Sin(Time.time*20) / 3.0f * Mathf.Pow(Mathf.Abs(player.movement) / Mathf.Max(0.1f,player.speed), 3);
+            yOffSet = Mathf.Sin(Time.time*20) / 3.0f * Mathf.Pow(Mathf.Abs(player.movement) / Mathf.Max(0.1f,player.speed*2), 3);
         }
         else yOffSet = yOffSet * 0.9f;
         this.transform.position = new Vector3(player.transform.position.x, Mathf.Max(y, player.transform.position.y) + yOffSet, z);
