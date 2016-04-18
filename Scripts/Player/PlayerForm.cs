@@ -78,7 +78,6 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
             }
             currentForm = newForm;
-            Debug.Log(forms[currentForm].formNumber + " " + newForm);
 
             cp.speed = forms[currentForm].speed;
             cp.jumpHeight = forms[currentForm].jumpHeight;
