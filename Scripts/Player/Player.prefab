@@ -170,6 +170,7 @@ MonoBehaviour:
   speed: 5
   jumpHeight: 15
   debug: 0
+  threat: 0
   damageLowerer: []
   maxLife: 0
   curLife: 0
@@ -183,6 +184,7 @@ MonoBehaviour:
   alive: 1
   cooldown: 1
   cd_remaining: 0
+  projectile: {fileID: 129356, guid: aaf45f189aa45b24ba35a76cfc7bc448, type: 2}
   feet: {fileID: 5833152}
   lastJumpTime: 44.352604
   form: {fileID: 11458784}
@@ -212,8 +214,12 @@ MonoBehaviour:
   cp: {fileID: 11420112}
   psys: {fileID: 19830824}
   soundManager: {fileID: 0}
+  threat: 0
   transformSound: {fileID: 8300000, guid: d50b3ebdc6a1a8a499162db48a106003, type: 3}
+  sunShafts: {fileID: 0}
+  blinkSpeed: 180
   damageLowerer: []
+  attackDmg: 0
 --- !u!198 &19830824
 ParticleSystem:
   m_ObjectHideFlags: 1

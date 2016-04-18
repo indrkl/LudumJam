@@ -30,6 +30,7 @@ public abstract class EntityBase : MonoBehaviour {
 
     public float cooldown; //ability cooldown for enemies, players get their cooldown from playerForm
     public float cd_remaining = 0;  //cooldown remaining til you can attack again
+    public Rigidbody2D projectile;
 
     Vector2 lastVelocity;
 
@@ -202,7 +203,8 @@ public abstract class EntityBase : MonoBehaviour {
             if (direction == "RIGHT")
             {
                 point2 = new Vector2(transform.position.x + AttackRange, transform.position.y + 0.3f);
-            } else
+            }
+            else
             {
                 point2 = new Vector2(transform.position.x - AttackRange, transform.position.y + 0.3f);
             }
@@ -213,13 +215,29 @@ public abstract class EntityBase : MonoBehaviour {
                 print(hit.transform.gameObject);
                 hit.transform.gameObject.GetComponent<EntityBase>().takeDamage(damage, 1);
             }
-            
+
         }
-       
-
-
     }
 
+    public void RangedAttack(float damage)
+    {
+        if (cd_remaining >= 0)
+        {
+            Rigidbody2D Projectile = (Instantiate(projectile, gameObject.transform.position + new Vector3(0.6443f, 0.5027f, 0), Quaternion.Euler(new Vector3(0, 0, 150))) as GameObject).GetComponent<Rigidbody2D>();
+
+            print(Projectile.gameObject);
+
+            if (direction == "RIGHT")
+            {
+                Projectile.velocity = new Vector2(10, 0);
+            } else
+            {
+                Projectile.velocity = new Vector2(-10, 0);
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            
+        }
+    }
     protected void WallsSlide()
     {
         //slide down on walls
