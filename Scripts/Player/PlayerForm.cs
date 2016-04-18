@@ -31,6 +31,12 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 
 	public AudioClip transformSound;
 
+
+	public UnityStandardAssets.ImageEffects.SunShafts sunShafts;
+	public float blinkSpeed = 180f;
+	private bool transforming;
+
+
     public static List<PlayerForm> forms;
     public float[] damageLowerer;
 
@@ -42,6 +48,10 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
 	
 	// Update is called once per frame
 	void Update () {
+		float intensity;
+		if (transforming) {
+			sunShafts.sunShaftIntensity = Mathf.Sin(Mathf.Deg2Rad * blinkSpeed);
+		}
 	
 	}
 
@@ -51,6 +61,8 @@ public class PlayerForm : MonoBehaviour, System.IEquatable<PlayerForm>, System.I
         {
             psys.Play();
 			soundManager.PlaySingle (transformSound);
+			transforming = true;
+
         }
         currentForm = newForm;
         Debug.Log(forms[currentForm].formNumber + " " + newForm);
